@@ -1,11 +1,11 @@
-package com.example.tasktimer.Room
+package com.example.tasktimer.Model
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [Data::class], version = 1, exportSchema = false)
+@Database(entities = [TaskTable::class], version = 1, exportSchema = false)
 abstract class TaskDatabase : RoomDatabase() {
 
     abstract fun taskDao(): TaskDao
@@ -27,6 +27,8 @@ abstract class TaskDatabase : RoomDatabase() {
                     .build()
             }
             return instance!!
-        }
-    }
-}
+        } //end get instance
+
+    }// end obj
+
+}// DB

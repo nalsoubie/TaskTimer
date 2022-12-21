@@ -1,15 +1,16 @@
-package com.example.tasktimer.Room
+package com.example.tasktimer.Model
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
 
 @Dao
 interface TaskDao {
+
     @Query("SELECT * FROM Tasks ORDER BY priority")
-    fun getAllTasks(): LiveData<List<Data>>
+    fun getAllTasks(): LiveData<List<TaskTable>>
 
     @Query("SELECT * FROM Tasks WHERE pk = :givenPk")
-    fun getTask(givenPk: Int): Data
+    fun getTask(givenPk: Int): TaskTable
 
     @Query("UPDATE Tasks SET taskTime = :taskTime WHERE pk = :givenPk")
     fun updateTaskTime(taskTime: Long, givenPk: Int)
@@ -18,11 +19,13 @@ interface TaskDao {
     fun updateTaskStatus(status: Boolean, givenPk: Int)
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun addNewTask(task: Data)
+    fun addNewTask(task: TaskTable)
 
     @Delete
-    fun deleteTask(task: Data)
+    fun deleteTask(task: TaskTable)
 
     @Update
-    fun updateTask(task: Data)
-}
+    fun updateTask(task: TaskTable)
+
+
+} //end interface
