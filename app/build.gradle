@@ -1,18 +1,17 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
-    id 'kotlin-android-extensions'
     id 'kotlin-kapt'
 }
 
 android {
     namespace 'com.example.tasktimer'
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.example.tasktimer"
         minSdk 26
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -39,7 +38,7 @@ android {
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'com.google.android.material:material:1.7.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
@@ -49,9 +48,9 @@ dependencies {
 
 
     //Room
-    implementation 'androidx.room:room-common:2.3.0'
-    implementation 'androidx.room:room-ktx:2.3.0'
-    implementation "androidx.room:room-runtime:2.3.0"
+    implementation 'androidx.room:room-common:2.4.3'
+    implementation 'androidx.room:room-ktx:2.4.3'
+    implementation "androidx.room:room-runtime:2.4.3"
     implementation 'android.arch.persistence.room:runtime:1.1.1'
-    kapt "androidx.room:room-compiler:2.3.0"
+    kapt "androidx.room:room-compiler:2.4.3"
 }
