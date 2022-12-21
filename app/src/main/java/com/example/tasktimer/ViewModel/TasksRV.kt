@@ -9,7 +9,10 @@ import com.example.tasktimer.View.MainActivity
 import com.example.tasktimer.databinding.ItemRowBinding
 
 
-class TasksRV(var taskList: List<TaskTable>, var Actvitiy: MainActivity):RecyclerView.Adapter<TasksRV.ViewHolder>() {
+class TasksRV(var clickListner: ClickListner ):RecyclerView.Adapter<TasksRV.ViewHolder>() {
+    private var taskList= listOf<TaskTable>()
+
+
     class ViewHolder(var binding:ItemRowBinding): RecyclerView.ViewHolder(binding.root){ }
     lateinit var mainActivityViewModel: MainViewModel
 
@@ -24,9 +27,12 @@ class TasksRV(var taskList: List<TaskTable>, var Actvitiy: MainActivity):Recycle
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         var task =taskList[position]
-        mainActivityViewModel = ViewModelProvider(Actvitiy).get(MainViewModel::class.java)
+
+        //mainActivityViewModel = ViewModelProvider(Actvitiy).get(MainViewModel::class.java)
         holder.binding.apply {
 
+            tilteTxt.setText("${task.taskName}")
+            subjectTxt.setText("${task.taskDescription}")
         }
     }
 
@@ -37,6 +43,10 @@ class TasksRV(var taskList: List<TaskTable>, var Actvitiy: MainActivity):Recycle
         notifyDataSetChanged()
     } //end update
 
+    interface ClickListner{
+//        fun update(note:NotesTable)
+//        fun delet(pk: Int)
+    }
 
 
 
