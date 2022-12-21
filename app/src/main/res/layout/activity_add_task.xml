@@ -28,7 +28,7 @@
             android:textSize="36sp" />
 
         <EditText
-            android:id="@+id/eTask"
+            android:id="@+id/taskET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
@@ -41,7 +41,7 @@
             android:textColorHint="#BFBBBB" />
 
         <EditText
-            android:id="@+id/eDescription"
+            android:id="@+id/descriptionET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -73,11 +73,11 @@
                 android:text="Please Choose Priority" />
 
            <ImageButton
-               android:id="@+id/img_Red"
+               android:id="@+id/imgRed"
                android:layout_width="wrap_content"
                android:layout_height="match_parent"/>
             <ImageButton
-                android:id="@+id/img_green"
+                android:id="@+id/imgGreen"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <ImageButton
