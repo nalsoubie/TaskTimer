@@ -21,24 +21,27 @@ class MainViewModel (application: Application): AndroidViewModel(application) {
         repository = Repository(taskDao)
         allTasks = repository.getTasks()
     }//end init
-    fun addNote(task: TaskTable){
+
+
+
+    fun addTask(task: TaskTable){
         CoroutineScope(Dispatchers.IO).launch {
             repository.insertTask(task)
         }
     }
-    fun updateNote(task: TaskTable){
+    fun updateTask(task: TaskTable){
         CoroutineScope(Dispatchers.IO).launch {
             repository.updateTask(task)
         }
 
     }
-    fun deleteNote(task: TaskTable){
+    fun deleteTask(task: TaskTable){
         CoroutineScope(Dispatchers.IO).launch {
             repository.deleteTask(task)
         }
 
     }
-    fun getNotes():LiveData<List<TaskTable>>{
+    fun getTasks():LiveData<List<TaskTable>>{
         return repository.getTasks()
     }
 

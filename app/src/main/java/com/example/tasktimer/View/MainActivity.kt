@@ -1,5 +1,6 @@
 package com.example.tasktimer.View
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
@@ -13,11 +14,20 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding= ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.bAdd.setOnClickListener{
+            intentToAddTask()
+        }
+
+
 
     }//end create
+    fun intentToAddTask(){
+        var intent = Intent(this,AddTaskActivity::class.java)
+        startActivity(intent)
+
+    }
 
 
 
