@@ -34,7 +34,7 @@
     </androidx.recyclerview.widget.RecyclerView>
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/bAdd"
         android:layout_width="95dp"
         android:layout_height="49dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -43,12 +43,12 @@
         app:srcCompat="@drawable/ic_add" />
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/showAll"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageButton"
+        app:layout_constraintStart_toEndOf="@+id/bAdd"
         app:srcCompat="@drawable/list_view_ic" />
 
 
