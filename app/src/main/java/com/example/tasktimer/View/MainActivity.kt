@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import com.example.tasktimer.ViewModel.MainViewModel
-
 import com.example.tasktimer.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
