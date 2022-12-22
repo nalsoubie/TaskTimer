@@ -33,17 +33,13 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
 
 
         rvAdapter = TasksRV(this)
-        binding.mainRV.adapter = rvAdapter
-        binding.counter.setOnClickListener {
-            timer()
-        }
+        binding.rvItems.adapter = rvAdapter
+
         viewModel.getTasks().observe(this, { taskslist ->
             rvAdapter.update(taskslist)
         })
 
         binding.apply {
-
-
             bAdd.setOnClickListener {
                 //intentToAddTask()
                 timer()
@@ -65,13 +61,13 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
                 var time=millisUntilFinished / 1000
                 time = time * -1 + 100
                 taskTimer = time
-                binding.counter.text = "Time: $time"
+                //binding.counter.text = "Time: $time"
                 Log.d("timer", "$time ")
                 Log.d("timertask", "$taskTimer ")
             }
 
             override fun onFinish() {
-                binding.counter.text = "Time: --"
+                //binding.counter.text = "Time: --"
 
             }
         }.start()
