@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.tasktimer.ViewModel.MainViewModel
 import com.example.tasktimer.ViewModel.TasksRV
 import com.example.tasktimer.databinding.ActivityMainBinding
+import kotlinx.android.synthetic.main.activity_main.view.*
 import kotlin.properties.Delegates
 
 
@@ -43,6 +44,7 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
             showAll.setOnClickListener {
                 totalTime = timer.text.toString()
                 timer.stop()
+                timer.reset
                 Log.d("checkthis","$totalTime")
             }
         }
