@@ -15,7 +15,9 @@ import kotlin.properties.Delegates
 class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
     private lateinit var binding: ActivityMainBinding
     private lateinit var rvAdapter: TasksRV
+    var totalTime = ""
       var taskTimer by Delegates.notNull<Long>()
+//    lateinit var taskT :Long
 
     private val viewModel by lazy { ViewModelProvider(this).get(MainViewModel::class.java) }
 
@@ -31,14 +33,17 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
         viewModel.getTasks().observe(this, { taskslist ->
             rvAdapter.update(taskslist)
         })
-
         binding.apply {
             taskTimer = 0
             bAdd.setOnClickListener {
+                timer.start()
                 //intentToAddTask()
-                TimerFun()
-                var x = taskTimer.toString()
-                timer.text = x
+                //TimerFun()
+            }
+            showAll.setOnClickListener {
+                totalTime = timer.text.toString()
+                timer.stop()
+                Log.d("checkthis","$totalTime")
             }
         }
 
@@ -51,24 +56,35 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
 
     }
 
-    fun TimerFun(){
-        object : CountDownTimer(100000, 1000) {
-            override fun onTick(millisUntilFinished: Long) {
-                var time=millisUntilFinished / 1000
-                time = time * -1 + 100
-                taskTimer = time
-                //binding.counter.text = "Time: $time"
-                Log.d("timer", "$time ")
-                Log.d("timertask", "$taskTimer ")
-            }
-
-            override fun onFinish() {
-                //binding.counter.text = "Time: --"
-
-            }
-        }.start()
-    }
+//    fun TimerFun(){
+//        object : CountDownTimer(100000, 1000) {
+//            override fun onTick(millisUntilFinished: Long) {
+//                var time=millisUntilFinished / 1000
+//                time = time * -1 + 100
+//                taskTimer = time
+//                binding.timer.text  = time.toString()
+//                binding.timer.timer
+//                //binding.counter.text = "Time: $time"
+//                Log.d("timer", "$time ")
+//                Log.d("timertask", "$taskTimer ")
+//            }
+//
+//            override fun onFinish() {
+//                //binding.counter.text = "Time: --"
+//
+//            }
+//        }.start()
+//    }
 
     //________________________________________________________/
+    fun splitTime(num:Long):String{
+        var hours:Int = (num /60).toInt()
+        var minute = num /60
+        var sec = num
+
+        if (sec.toInt() == 60){
+        }
+        return " "
+    }
 
 }
