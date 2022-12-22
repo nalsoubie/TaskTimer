@@ -1,21 +1,14 @@
 package com.example.tasktimer.View
 
-import android.R
 import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.util.Log
-import android.view.View
-import android.widget.Chronometer
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.tasktimer.ViewModel.MainViewModel
 import com.example.tasktimer.ViewModel.TasksRV
 import com.example.tasktimer.databinding.ActivityMainBinding
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
-import kotlinx.coroutines.launch
 import kotlin.properties.Delegates
 
 
@@ -42,7 +35,8 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
         binding.apply {
             bAdd.setOnClickListener {
                 //intentToAddTask()
-                timer()
+                TimerFun()
+                timer.text
             }
         }
 
@@ -55,7 +49,7 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
 
     }
 
-    fun timer(){
+    fun TimerFun(){
         object : CountDownTimer(100000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 var time=millisUntilFinished / 1000
