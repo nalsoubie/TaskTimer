@@ -7,8 +7,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.tasktimer.Model.TaskTable
 import com.example.tasktimer.ViewModel.MainViewModel
 import com.example.tasktimer.databinding.ActivityAddTaskBinding
-import kotlinx.android.synthetic.main.activity_add_task.view.*
-import kotlinx.coroutines.CoroutineScope
+//import kotlinx.android.synthetic.main.activity_add_task.view.*
+//import kotlinx.coroutines.CoroutineScope
 
 class AddTaskActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAddTaskBinding
