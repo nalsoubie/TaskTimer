@@ -33,10 +33,12 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
         })
 
         binding.apply {
+            taskTimer = 0
             bAdd.setOnClickListener {
                 //intentToAddTask()
                 TimerFun()
-                timer.text
+                var x = taskTimer.toString()
+                timer.text = x
             }
         }
 
