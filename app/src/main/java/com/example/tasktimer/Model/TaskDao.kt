@@ -10,7 +10,7 @@ interface TaskDao {
     fun getAllTasks(): LiveData<List<TaskTable>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun addNewTask(task: TaskTable)
+    suspend fun addNewTask(task: TaskTable)
 
     @Delete
     fun deleteTask(task: TaskTable)

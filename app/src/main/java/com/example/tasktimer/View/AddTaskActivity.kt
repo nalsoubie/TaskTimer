@@ -3,12 +3,12 @@ package com.example.tasktimer.View
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.lifecycle.ViewModelProvider
 import com.example.tasktimer.Model.TaskTable
 import com.example.tasktimer.ViewModel.MainViewModel
 import com.example.tasktimer.databinding.ActivityAddTaskBinding
-import kotlinx.android.synthetic.main.activity_add_task.view.*
-import kotlinx.coroutines.CoroutineScope
+
 
 class AddTaskActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAddTaskBinding
@@ -36,12 +36,16 @@ class AddTaskActivity : AppCompatActivity() {
                 imgYellow.setBackgroundColor(Color.YELLOW)
                 color = "2yellow"
             }
-
+            binding.saveButton.setOnClickListener {
             var taskName = taskET.text.toString()
             var taskSubject = taskET.text.toString()
             if (taskName.isNotEmpty()&&taskSubject.isNotEmpty()&&color.length>1){
+                Log.d("TAG","hwa wsl hna ?")
                 var task = TaskTable(0,taskName,taskSubject,0,color,false)
-                viewModel.addTask(task)
+
+                    viewModel.addTask(task)
+                }
+                //viewModel.addTask(task)
 
 
 
