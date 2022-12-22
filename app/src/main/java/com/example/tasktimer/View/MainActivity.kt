@@ -2,8 +2,9 @@ package com.example.tasktimer.View
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.CountDownTimer
+import android.os.SystemClock
 import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.tasktimer.ViewModel.MainViewModel
@@ -16,8 +17,9 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
     private lateinit var binding: ActivityMainBinding
     private lateinit var rvAdapter: TasksRV
     var totalTime = ""
-      var taskTimer by Delegates.notNull<Long>()
-//    lateinit var taskT :Long
+    var taskTimer=0L
+    var running:Boolean= false
+
 
     private val viewModel by lazy { ViewModelProvider(this).get(MainViewModel::class.java) }
 
@@ -36,14 +38,15 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
         binding.apply {
             taskTimer = 0
             bAdd.setOnClickListener {
-                timer.start()
-                //intentToAddTask()
-                //TimerFun()
+                timer.setBase(SystemClock.elapsedRealtime() - taskTimer);
+                timer   .start();
+                running = true;
+
             }
             showAll.setOnClickListener {
                 totalTime = timer.text.toString()
-                timer.stop()
-                //timer.reset
+                pauseChronometer()
+
                 Log.d("checkthis","$totalTime")
             }
         }
@@ -87,5 +90,16 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
         }
         return " "
     }
+
+    fun pauseChronometer() {
+        if (running) {
+            binding.timer.stop()
+            taskTimer = SystemClock.elapsedRealtime() - binding.timer.getBase()
+            running = false
+        }
+    }
+
+
+
 
 }
