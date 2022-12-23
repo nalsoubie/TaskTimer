@@ -34,7 +34,12 @@ class Timer(var context: MainActivity) {
                 running = false
             }//if
         }//context
-    }// pause fun
+    }
+    fun restart(){
+        context.taskT.setBase(SystemClock.elapsedRealtime())
+        taskTime = 0
+
+}// pause fun
 
 
 

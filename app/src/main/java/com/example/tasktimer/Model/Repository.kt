@@ -21,7 +21,7 @@ class Repository(var taskDao:TaskDao) {
     }
 
      // Get all tasks as list
-    suspend fun getTasks():LiveData<List<TaskTable>>{
+     fun getTasks():LiveData<List<TaskTable>>{
         return taskDao.getAllTasks()
     }// Done
 

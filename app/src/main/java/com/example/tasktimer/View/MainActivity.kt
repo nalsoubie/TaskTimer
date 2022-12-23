@@ -7,6 +7,7 @@ import android.util.Log
 import android.widget.Chronometer
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import com.example.tasktimer.Model.TaskTable
 import com.example.tasktimer.Model.Timer
 import com.example.tasktimer.ViewModel.MainViewModel
 import com.example.tasktimer.ViewModel.TasksRV
@@ -20,8 +21,6 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
     var totalTime = ""
 
     lateinit var taskT: Chronometer
-
-
      val viewModel by lazy { ViewModelProvider(this).get(MainViewModel::class.java) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,6 +45,9 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
             bAdd.setOnClickListener {
                 timer.startTimer()
             }// add btn
+            taskName.setOnClickListener {
+                timer.restart()
+            }
 
             showAll.setOnClickListener {
                 totalTime = taskT.text.toString()
@@ -96,8 +98,9 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
         return " "
     }
 
-
-
+    override fun startTimer(table: TaskTable) {
+        TODO("Not yet implemented")
+    }
 
 
 }

@@ -30,9 +30,10 @@ class TasksRV(var clickListner: ClickListner ):RecyclerView.Adapter<TasksRV.View
 
         //mainActivityViewModel = ViewModelProvider(Actvitiy).get(MainViewModel::class.java)
         holder.binding.apply {
-
             tilteTxt.setText("${task.taskName}")
             subjectTxt.setText("${task.taskDescription}")
+
+
         }
     }
 
@@ -44,8 +45,8 @@ class TasksRV(var clickListner: ClickListner ):RecyclerView.Adapter<TasksRV.View
     } //end update
 
     interface ClickListner{
-//        fun update(note:NotesTable)
-//        fun delet(pk: Int)
+        fun startTimer(table: TaskTable)
+//
     }
 
 
