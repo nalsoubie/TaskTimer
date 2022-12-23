@@ -18,6 +18,12 @@ interface TaskDao {
     @Update
     fun updateTask(task: TaskTable)
 
+
+    @Query("UPDATE Tasks SET taskTime = :taskTime WHERE pk = :givenPk")
+    fun updateTaskTime(taskTime: Long, givenPk: Int)
+
+
+
 //    @Query("SELECT * FROM Tasks WHERE pk = :givenPk")
 //    fun getTask(givenPk: Int): TaskTable
 //

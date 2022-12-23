@@ -7,7 +7,7 @@
     app:cardElevation="5dp"
     app:cardCornerRadius="10dp"
     app:contentPadding="10dp"
-    android:layout_height="150dp">
+    android:layout_height="200dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,7 +25,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_weight="0.2"
         android:layout_gravity="center"
         android:layout_marginLeft="10dp"
@@ -67,12 +67,11 @@
 
 
 
-        <TextView
+        <Chronometer
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@android:color/black"
-            android:text="00:11"
             android:textSize="12sp"
             android:id="@+id/timerTxt"
             android:layout_gravity="right"
@@ -82,7 +81,26 @@
             android:paddingTop="5dp"
             android:paddingBottom="5dp" />
 
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:minHeight="48dp"
+            android:text="start"
+            android:textColor="@color/purple_200" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/restarbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:minHeight="48dp"
+            android:layout_weight="1"
+            android:text="restart"/>
+
+
     </LinearLayout>
+
 
 
 </androidx.cardview.widget.CardView>

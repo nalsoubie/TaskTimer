@@ -2,23 +2,30 @@ package com.example.tasktimer.Model
 
 import androidx.lifecycle.LiveData
 
-class Repository(var noteDAO:TaskDao) {
+class Repository(var taskDao:TaskDao) {
 
         // ADD
     suspend fun insertTask(task:TaskTable){
-        noteDAO.addNewTask(task)
+        taskDao.addNewTask(task)
     }// Done
+
+
         // Update
     suspend fun updateTask(task:TaskTable){
-        noteDAO.updateTask(task)
+        taskDao.updateTask(task)
     }// Done
 
     // Delete
     suspend fun deleteTask(task:TaskTable){
-        noteDAO.deleteTask(task)
+        taskDao.deleteTask(task)
     }
+
      // Get all tasks as list
-    fun getTasks():LiveData<List<TaskTable>>{
-        return noteDAO.getAllTasks()
+    suspend fun getTasks():LiveData<List<TaskTable>>{
+        return taskDao.getAllTasks()
     }// Done
+
+    fun getTimer(time:Long, pk:Int){
+        taskDao.updateTaskTime(time,pk)
+    }
 }

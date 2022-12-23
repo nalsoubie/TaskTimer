@@ -4,52 +4,57 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.SystemClock
 import android.util.Log
-import android.view.View
+import android.widget.Chronometer
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import com.example.tasktimer.Model.Timer
 import com.example.tasktimer.ViewModel.MainViewModel
 import com.example.tasktimer.ViewModel.TasksRV
 import com.example.tasktimer.databinding.ActivityMainBinding
-import kotlin.properties.Delegates
 
 
 class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
     private lateinit var binding: ActivityMainBinding
+
     private lateinit var rvAdapter: TasksRV
     var totalTime = ""
-    var taskTimer=0L
-    var running:Boolean= false
+
+    lateinit var taskT: Chronometer
 
 
-    private val viewModel by lazy { ViewModelProvider(this).get(MainViewModel::class.java) }
+     val viewModel by lazy { ViewModelProvider(this).get(MainViewModel::class.java) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        taskT=binding.timer
+        val timer = Timer(this)
+
 
         rvAdapter = TasksRV(this)
         binding.rvItems.adapter = rvAdapter
 
+
         viewModel.getTasks().observe(this, { taskslist ->
             rvAdapter.update(taskslist)
-        })
-        binding.apply {
-            taskTimer = 0
-            bAdd.setOnClickListener {
-                timer.setBase(SystemClock.elapsedRealtime() - taskTimer);
-                timer   .start();
-                running = true;
+        }) //view model
 
-            }
+
+        binding.apply {
+            bAdd.setOnClickListener {
+                timer.startTimer()
+            }// add btn
+
             showAll.setOnClickListener {
-                totalTime = timer.text.toString()
-                pauseChronometer()
+                totalTime = taskT.text.toString()
+                timer.pauseTimer()
 
                 Log.d("checkthis","$totalTime")
-            }
-        }
+            } //show all btn
+        }// apply
+
 
 
     }//end create
@@ -91,13 +96,6 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
         return " "
     }
 
-    fun pauseChronometer() {
-        if (running) {
-            binding.timer.stop()
-            taskTimer = SystemClock.elapsedRealtime() - binding.timer.getBase()
-            running = false
-        }
-    }
 
 
 
