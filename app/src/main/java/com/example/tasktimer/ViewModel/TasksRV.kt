@@ -1,7 +1,9 @@
 package com.example.tasktimer.ViewModel
 
+import android.os.SystemClock
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Chronometer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tasktimer.Model.TaskTable
@@ -11,6 +13,8 @@ import com.example.tasktimer.databinding.ItemRowBinding
 
 class TasksRV(var clickListner: ClickListner ):RecyclerView.Adapter<TasksRV.ViewHolder>() {
     private var taskList= listOf<TaskTable>()
+    lateinit var current:Chronometer
+
 
 
     class ViewHolder(var binding:ItemRowBinding): RecyclerView.ViewHolder(binding.root){ }
@@ -28,12 +32,19 @@ class TasksRV(var clickListner: ClickListner ):RecyclerView.Adapter<TasksRV.View
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         var task =taskList[position]
 
+
         //mainActivityViewModel = ViewModelProvider(Actvitiy).get(MainViewModel::class.java)
         holder.binding.apply {
             tilteTxt.setText("${task.taskName}")
             subjectTxt.setText("${task.taskDescription}")
 
+
+
+           current= timerTxt
+            //timerTxt.getBase()
             cardView.setOnClickListener {
+                timerTxt.base = SystemClock.elapsedRealtime() - (task.taskTime)
+                //timerTxt.setBase(SystemClock.elapsedRealtime()- task.taskTime)
                 clickListner.startTime(task)
             }
 

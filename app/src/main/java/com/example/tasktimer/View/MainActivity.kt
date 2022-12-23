@@ -34,7 +34,6 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
         taskT=binding.timer
         timer = Timer(this)
 
-
         rvAdapter = TasksRV(this)
         binding.rvItems.adapter = rvAdapter
 
@@ -107,6 +106,8 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
         timer.taskTime=task.taskTime
         timer.startTimer()
 
+
+
         task.isRunning=timer.running
         viewModel.updateTask(task)
         Log.d("TAG2", "$task ")
@@ -120,7 +121,6 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
         task.isRunning=timer.running
         viewModel.updateTask(task)
         Log.d("TAG1", "$task ")
-
     }
 
 
