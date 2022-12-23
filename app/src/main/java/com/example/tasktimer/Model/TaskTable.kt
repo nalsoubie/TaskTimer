@@ -9,7 +9,7 @@ data class TaskTable(
     val pk: Int, //
     val taskName: String, //
     val taskDescription: String, //
-    val taskTime: Long, //
+    var taskTime: Long, //
     val priority: String, //
-    val isRunning: Boolean = false //
+    var isRunning: Boolean = false //
 )

@@ -45,6 +45,18 @@ class MainViewModel (application: Application): AndroidViewModel(application) {
         return repository.getTasks()
     }
 
+//    fun updateTime(time:Long, pk:Int){
+//        CoroutineScope(Dispatchers.IO).launch {
+//            repository.updateTimer(time,pk)
+//        }
+//    }
+//
+//    fun updateStatus(running:Boolean, pk:Int){
+//        CoroutineScope(Dispatchers.IO).launch {
+//            repository.updateStatus(running,pk)
+//        }
+//    }
+
 
 
 

@@ -25,7 +25,11 @@ class Repository(var taskDao:TaskDao) {
         return taskDao.getAllTasks()
     }// Done
 
-    fun getTimer(time:Long, pk:Int){
-        taskDao.updateTaskTime(time,pk)
-    }
+//    fun updateTimer(time:Long, pk:Int){
+//        taskDao.updateTaskTime(time,pk)
+//    }
+//
+//    fun updateStatus(running:Boolean, pk:Int){
+//        taskDao.updateTaskStatus(running,pk)
+//    }
 }

@@ -33,6 +33,13 @@ class TasksRV(var clickListner: ClickListner ):RecyclerView.Adapter<TasksRV.View
             tilteTxt.setText("${task.taskName}")
             subjectTxt.setText("${task.taskDescription}")
 
+            cardView.setOnClickListener {
+                clickListner.startTime(task)
+            }
+
+            pausebtn.setOnClickListener {
+                clickListner.pauseTime(task)
+            }
 
         }
     }
@@ -45,8 +52,10 @@ class TasksRV(var clickListner: ClickListner ):RecyclerView.Adapter<TasksRV.View
     } //end update
 
     interface ClickListner{
-        fun startTimer(table: TaskTable)
-//
+        fun startTime(task:TaskTable)
+        fun pauseTime(task:TaskTable)
+        //fun startTime(running:Boolean, tasktiming:Long, pk:Int)
+        //fun pauseTime(running:Boolean, tasktiming:Long)
     }
 
 

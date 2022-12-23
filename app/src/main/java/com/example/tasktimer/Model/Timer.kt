@@ -8,9 +8,10 @@ class Timer(var context: MainActivity) {
 
     companion object{
         val totalTime=0L
-        var taskTime=0L
-        var running=false
+
     }
+    var taskTime=0L
+    var running=false
 
 
     fun startTimer() {

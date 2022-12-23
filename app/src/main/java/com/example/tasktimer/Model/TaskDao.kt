@@ -18,9 +18,16 @@ interface TaskDao {
     @Update
     fun updateTask(task: TaskTable)
 
+//    @Update
+//    fun updateTaskStatus(status: Boolean, givenPk: Int)
+//
+//
+//
+//    @Query("UPDATE Tasks SET taskTime = :taskTime  WHERE pk = :givenPk")
+//    fun updateTaskTime(taskTime: Long, givenPk: Int)
 
-    @Query("UPDATE Tasks SET taskTime = :taskTime WHERE pk = :givenPk")
-    fun updateTaskTime(taskTime: Long, givenPk: Int)
+   // @Query("UPDATE Tasks SET isRunning = :status WHERE pk = :givenPk")
+
 
 
 

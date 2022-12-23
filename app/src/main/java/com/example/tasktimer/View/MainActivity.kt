@@ -20,7 +20,10 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
     private lateinit var rvAdapter: TasksRV
     var totalTime = ""
 
+
     lateinit var taskT: Chronometer
+    lateinit var timer: Timer
+
      val viewModel by lazy { ViewModelProvider(this).get(MainViewModel::class.java) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,7 +32,7 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
         setContentView(binding.root)
 
         taskT=binding.timer
-        val timer = Timer(this)
+        timer = Timer(this)
 
 
         rvAdapter = TasksRV(this)
@@ -43,15 +46,15 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
 
         binding.apply {
             bAdd.setOnClickListener {
-                timer.startTimer()
+                //timer.startTimer()
             }// add btn
             taskName.setOnClickListener {
-                timer.restart()
+                //timer.restart()
             }
 
             showAll.setOnClickListener {
                 totalTime = taskT.text.toString()
-                timer.pauseTimer()
+                //timer.pauseTimer()
 
                 Log.d("checkthis","$totalTime")
             } //show all btn
@@ -98,8 +101,26 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
         return " "
     }
 
-    override fun startTimer(table: TaskTable) {
-        TODO("Not yet implemented")
+    override fun startTime(task:TaskTable) {
+
+        timer.running=task.isRunning
+        timer.taskTime=task.taskTime
+        timer.startTimer()
+
+        task.isRunning=timer.running
+        viewModel.updateTask(task)
+        Log.d("TAG2", "$task ")
+    }
+
+    override fun pauseTime(task: TaskTable) {
+        timer.running=task.isRunning
+        timer.taskTime=task.taskTime
+        timer.pauseTimer()
+        task.taskTime=timer.taskTime
+        task.isRunning=timer.running
+        viewModel.updateTask(task)
+        Log.d("TAG1", "$task ")
+
     }
 
 

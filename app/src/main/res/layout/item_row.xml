@@ -82,12 +82,12 @@
             android:textSize="12sp" />
 
         <com.google.android.material.chip.Chip
-            android:id="@+id/chip"
+            android:id="@+id/pausebtn"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:layout_weight="1"
             android:minHeight="48dp"
-            android:text="start"
+            android:text="pause"
             android:textColor="@color/purple_200" />
 
         <com.google.android.material.chip.Chip
