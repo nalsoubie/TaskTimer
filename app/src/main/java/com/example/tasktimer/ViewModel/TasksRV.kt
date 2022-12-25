@@ -1,26 +1,20 @@
 package com.example.tasktimer.ViewModel
 
-import android.os.SystemClock
-import android.util.Log
+
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.ViewGroup
-import android.widget.Chronometer
-import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tasktimer.Model.TaskTable
-import com.example.tasktimer.View.MainActivity
+
 import com.example.tasktimer.databinding.ItemRowBinding
 
 
 class TasksRV(var clickListner: ClickListner ):RecyclerView.Adapter<TasksRV.ViewHolder>() {
     private var taskList= listOf<TaskTable>()
 
-
-
-
     class ViewHolder(var binding:ItemRowBinding): RecyclerView.ViewHolder(binding.root){ }
-    lateinit var mainActivityViewModel: MainViewModel
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
@@ -33,6 +27,7 @@ class TasksRV(var clickListner: ClickListner ):RecyclerView.Adapter<TasksRV.View
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         var task =taskList[position]
+        var item1: MenuItem
 
         //mainActivityViewModel = ViewModelProvider(Actvitiy).get(MainViewModel::class.java)
         holder.binding.apply {
@@ -89,6 +84,10 @@ class TasksRV(var clickListner: ClickListner ):RecyclerView.Adapter<TasksRV.View
                 ///timerTxt.base = SystemClock.elapsedRealtime() - (task.taskTime)
             }
 
+            options.setOnClickListener {
+                clickListner.popUpMenu(task)
+            }
+
         }
     }
 
@@ -103,12 +102,10 @@ class TasksRV(var clickListner: ClickListner ):RecyclerView.Adapter<TasksRV.View
         fun startTime(task:TaskTable,list:List<TaskTable>)
         fun pauseTime(task:TaskTable)
         fun restartTime(task: TaskTable)
+        fun popUpMenu(task: TaskTable)
 
         //fun startTime(running:Boolean, tasktiming:Long, pk:Int)
         //fun pauseTime(running:Boolean, tasktiming:Long)
-    }
-
-
-
+    }// interface
 
 } //end RV

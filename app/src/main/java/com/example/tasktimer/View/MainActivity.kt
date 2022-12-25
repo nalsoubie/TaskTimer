@@ -1,16 +1,19 @@
 package com.example.tasktimer.View
 
+
 import android.content.Intent
 import android.os.Bundle
-import android.os.Looper
 import android.os.SystemClock
 import android.util.Log
-import android.widget.Chronometer
-import android.widget.Toast
+import android.view.LayoutInflater
+import android.view.MenuItem
+import android.widget.*
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.tasktimer.Model.TaskTable
 import com.example.tasktimer.Model.Timer
+import com.example.tasktimer.R
 import com.example.tasktimer.ViewModel.MainViewModel
 import com.example.tasktimer.ViewModel.TasksRV
 import com.example.tasktimer.databinding.ActivityMainBinding
@@ -63,6 +66,7 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
                 Log.d("checkthis","$totalTime")
             } //show all btn
         }// apply
+
 
 
 
@@ -180,8 +184,87 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
         Log.d("restart", "$task ")
     }
 
+    override fun popUpMenu(task: TaskTable) {
+
+        val inflter = LayoutInflater.from(this)
+        val layout = inflter.inflate(R.layout.dialog_pop,null)
+
+        val editTitle = layout.findViewById<EditText>(R.id.editTitle)
+        val editDesc = layout.findViewById<EditText>(R.id.editDesctiption)
+
+        val dialogBuilder = AlertDialog.Builder(this)
+
+        val popupMenu = PopupMenu(this , binding.rvItems.findViewById(R.id.options))
+        // add the menu
+        popupMenu.inflate(R.menu.menu)
+        // implement on menu item click Listener
+        popupMenu.setOnMenuItemClickListener(object : PopupMenu.OnMenuItemClickListener{
+            override fun onMenuItemClick(item: MenuItem?): Boolean {
+                when(item?.itemId){
+                    R.id.editbtn -> {
+                        dialogBuilder
+                            .setPositiveButton("Edit") { dialog, _ ->
+
+                                if (editTitle.text.toString().isEmpty()&& editDesc.text.toString().isEmpty() ){
+                                    editTitle.setError("Please provide a name.")
+                                    editTitle.requestFocus()
+                                    editDesc.setError("Please provide a name.")
+                                    editDesc.requestFocus()
+                                    Toast.makeText(this@MainActivity,"Need ti fill all boxes", Toast.LENGTH_SHORT).show()
+                                }// if
+                                else{
+                                    task.taskName= editTitle.text.toString()
+                                    task.taskDescription=editDesc.text.toString()
+
+                                    viewModel.updateTask(task)
+                                    Toast.makeText(
+                                        this@MainActivity, "Task has been updated", Toast.LENGTH_SHORT).show()
+
+
+                                }//else
+
+                            }
+                            .setNegativeButton("Cancel") { dialog, _ ->
+                                dialog.dismiss()
+                            }
+                        val alert = dialogBuilder.create()
+                        alert.setTitle("Update Task")
+                        alert.setView(layout)
+                        alert.show()
+
+                        true
+                    }// edit
+                    R.id.deletebtn -> {
+                        /**set delete*/
+                        dialogBuilder
+                            .setTitle("Delete Confirmation")
+                            .setMessage("Are you sure delete this Task?")
+                            .setPositiveButton("Delete") { dialog, _ ->
+                                viewModel.deleteTask(task)
+                                Toast.makeText(
+                                    this@MainActivity,
+                                    "Deleted this Task",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                                dialog.dismiss()
+                            }
+                            .setNegativeButton("No") { dialog, _ ->
+                                dialog.dismiss()
+                            }
+                            .create()
+                            .show()
+
+                        true
+                    } //delet item
+                }//when
+                return false
+            }// menu on click
+        })// obj
+        popupMenu.show()
+
+
+    } //pop up fun
 
 
 
-
-}
+} //main

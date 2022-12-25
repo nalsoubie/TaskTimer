@@ -35,6 +35,13 @@ class MainViewModel (application: Application): AndroidViewModel(application) {
         }
 
     }
+
+//    fun updateNote(pk:Int, editTitle:String, editDescription:String){
+//        CoroutineScope(Dispatchers.IO).launch {
+//            repository.updateTask(TaskTable(pk,editTitle, editDescription,)
+//        } //launch
+//    }//end update
+
     fun deleteTask(task: TaskTable){
         CoroutineScope(Dispatchers.IO).launch {
             repository.deleteTask(task)
