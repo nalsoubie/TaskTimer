@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
         rvAdapter = TasksRV(this)
         binding.rvItems.adapter = rvAdapter
 
-
+        lastTask = TaskTable(2,"2","da",5,"a",false)
         viewModel.getTasks().observe(this, { taskslist ->
             rvAdapter.update(taskslist)
         }) //view model
@@ -116,17 +116,18 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
             for (i in list){
                 if (i.isRunning == true){
                     lastTask = i
+                    Log.d("TAG0100","$lastTask,$i")
                     pauseTime(lastTask)
                     // fun pause that object
                     withContext(Dispatchers.Main){
-                        Toast.makeText(this@MainActivity,"you already have an active timer",Toast.LENGTH_LONG).show()
+                        Toast.makeText(this@MainActivity,"you ${lastTask.taskName}",Toast.LENGTH_LONG).show()
                     }
                 }else{
                     var timer = Timer(this@MainActivity,task)
                     timer.running=task.isRunning
                     timer.taskTime=task.taskTime
                     timer.startTimer()
-                    task.isRunning=timer.running
+                    task.isRunning = true
                     viewModel.updateTask(task)
                     Log.d("TAG2", "$task ")
                     if (task.isRunning == false){
@@ -136,6 +137,11 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
             }
         }
 
+/*
+1- check is running OB
+2- pasue (create the last task Var)
+3
+ */
 //        var timer = Timer(this,task)
 //        timer.running=task.isRunning
 //        timer.taskTime=task.taskTime
@@ -151,9 +157,10 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
         timer.running=task.isRunning
         timer.taskTime=task.taskTime
         timer.pauseTimer()
-        taskT.stop()
-        task.taskTime=   SystemClock.elapsedRealtime() - taskT.base //
-        task.isRunning=timer.running
+        //taskT.stop() / EXtra
+        task.isRunning = false
+        task.taskTime=   SystemClock.elapsedRealtime() - taskT.getBase() //
+        //task.isRunning=timer.running //Extra
         viewModel.updateTask(task)
         Log.d("TAG1", "$task ")
         if (task.isRunning == false){

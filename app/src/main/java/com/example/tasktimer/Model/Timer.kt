@@ -5,7 +5,7 @@ import android.util.Log
 import com.example.tasktimer.View.MainActivity
 
 
-class Timer(var context: MainActivity,task:TaskTable) {
+class Timer(var context: MainActivity,var task:TaskTable) {
     companion object {
         val totalTime = 0L
     }
@@ -14,6 +14,7 @@ class Timer(var context: MainActivity,task:TaskTable) {
 
     // check if the task is running
     var running = task.isRunning
+
 
 
 
@@ -28,6 +29,7 @@ class Timer(var context: MainActivity,task:TaskTable) {
                     Log.d("TESTTIME","$xy")
                     context.taskT.start()
                     running = true
+
 
                 }// if
             } //context

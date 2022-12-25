@@ -38,7 +38,8 @@ class TasksRV(var clickListner: ClickListner ):RecyclerView.Adapter<TasksRV.View
         holder.binding.apply {
             tilteTxt.setText("${task.taskName}")
             subjectTxt.setText("${task.taskDescription}")
-            //timerTxt.getBase()
+            //timerTxt.getBase() +-
+            //
 
             //timerTxt.setBase(SystemClock.elapsedRealtime())
             cardView.setOnClickListener {
