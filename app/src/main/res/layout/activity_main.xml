@@ -96,7 +96,7 @@
         app:layout_constraintEnd_toStartOf="@+id/total"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
+    <Chronometer
         android:id="@+id/total"
         android:layout_width="168dp"
         android:layout_height="51dp"

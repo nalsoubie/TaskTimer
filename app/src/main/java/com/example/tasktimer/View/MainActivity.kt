@@ -2,6 +2,7 @@ package com.example.tasktimer.View
 
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.os.SystemClock
 import android.util.Log
@@ -62,6 +63,8 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
             total.setOnClickListener {
                 totalTime = taskT.text.toString()
                 //timer.pauseTimer()
+                var intent = Intent(this@MainActivity, ChartTasks_Activity::class.java)
+                startActivity(intent)
 
                 Log.d("checkthis","$totalTime")
             } //show all btn
@@ -139,7 +142,10 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
                     }
                 }
             }
+
         }
+
+        //binding.total.text = "Total Time\n${taskT.contentDescription}"
 
 /*
 1- check is running OB
@@ -170,6 +176,9 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
         if (task.isRunning == false){
             taskT.stop()
         }
+        //binding.total.text = "Total Time\n${taskT.contentDescription}"
+
+
     }
 
     override fun restartTime(task: TaskTable) {
@@ -182,15 +191,34 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
         viewModel.updateTask(task)
 
         Log.d("restart", "$task ")
+
+
     }
 
     override fun popUpMenu(task: TaskTable) {
 
+        var color=""
         val inflter = LayoutInflater.from(this)
         val layout = inflter.inflate(R.layout.dialog_pop,null)
 
         val editTitle = layout.findViewById<EditText>(R.id.editTitle)
         val editDesc = layout.findViewById<EditText>(R.id.editDesctiption)
+
+        val refPri= layout.findViewById<ImageButton>(R.id.redPri)
+        val greenPri= layout.findViewById<ImageButton>(R.id.greenPri)
+        val yellowPri= layout.findViewById<ImageButton>(R.id.yellowPri)
+        refPri.setOnClickListener {
+            refPri.setBackgroundColor(Color.RED)
+            color="0red"
+        }
+        greenPri.setOnClickListener {
+            greenPri.setBackgroundColor(Color.GREEN)
+            color = "1green"
+        }
+        yellowPri.setOnClickListener {
+            yellowPri.setBackgroundColor(Color.YELLOW)
+            color = "2yellow"
+        }
 
         val dialogBuilder = AlertDialog.Builder(this)
 
@@ -215,7 +243,7 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
                                 else{
                                     task.taskName= editTitle.text.toString()
                                     task.taskDescription=editDesc.text.toString()
-
+                                    task.priority=color
                                     viewModel.updateTask(task)
                                     Toast.makeText(
                                         this@MainActivity, "Task has been updated", Toast.LENGTH_SHORT).show()

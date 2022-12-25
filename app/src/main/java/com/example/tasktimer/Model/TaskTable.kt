@@ -11,6 +11,6 @@ data class TaskTable(
     var taskName: String, //
     var taskDescription: String, //
     var taskTime: Long, //
-    val priority: String, //
+    var priority: String, //
     var isRunning: Boolean = false, //
 )

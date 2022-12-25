@@ -2,11 +2,9 @@ package com.example.tasktimer.ViewModel
 
 
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tasktimer.Model.TaskTable
-
 import com.example.tasktimer.databinding.ItemRowBinding
 
 
@@ -27,7 +25,7 @@ class TasksRV(var clickListner: ClickListner ):RecyclerView.Adapter<TasksRV.View
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         var task =taskList[position]
-        var item1: MenuItem
+
 
         //mainActivityViewModel = ViewModelProvider(Actvitiy).get(MainViewModel::class.java)
         holder.binding.apply {
