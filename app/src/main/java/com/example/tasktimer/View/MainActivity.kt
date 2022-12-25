@@ -2,9 +2,11 @@ package com.example.tasktimer.View
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Looper
 import android.os.SystemClock
 import android.util.Log
 import android.widget.Chronometer
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.tasktimer.Model.TaskTable
@@ -12,6 +14,7 @@ import com.example.tasktimer.Model.Timer
 import com.example.tasktimer.ViewModel.MainViewModel
 import com.example.tasktimer.ViewModel.TasksRV
 import com.example.tasktimer.databinding.ActivityMainBinding
+import kotlinx.coroutines.*
 
 
 class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
@@ -19,12 +22,13 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
 
     private lateinit var rvAdapter: TasksRV
     var totalTime = ""
+    var lastTask = TaskTable(2,"2","da",5,"a",false)
 
 
     lateinit var taskT: Chronometer
-    lateinit var timer: Timer
+    //lateinit var timer: Timer
 
-     val viewModel by lazy { ViewModelProvider(this).get(MainViewModel::class.java) }
+    val viewModel by lazy { ViewModelProvider(this).get(MainViewModel::class.java) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +36,7 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
         setContentView(binding.root)
 
         taskT=binding.timer
-        timer = Timer(this)
+        //timer = Timer(this)
 
         rvAdapter = TasksRV(this)
         binding.rvItems.adapter = rvAdapter
@@ -46,6 +50,7 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
         binding.apply {
             bAdd.setOnClickListener {
                 //timer.startTimer()
+                intentToAddTask()
             }// add btn
             taskName.setOnClickListener {
                 //timer.restart()
@@ -100,28 +105,76 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
         return " "
     }
 
-    override fun startTime(task:TaskTable) {
-
-        timer.running=task.isRunning
-        timer.taskTime=task.taskTime
-        timer.startTimer()
+    override fun startTime(task: TaskTable, list: List<TaskTable>) {
+        Log.d("ds","sd")
 
 
+        CoroutineScope(Dispatchers.IO).launch {
+            var list = async {
+                viewModel.getTasksBloean()
+            }.await()
+            for (i in list){
+                if (i.isRunning == true){
+                    lastTask = i
+                    pauseTime(lastTask)
+                    // fun pause that object
+                    withContext(Dispatchers.Main){
+                        Toast.makeText(this@MainActivity,"you already have an active timer",Toast.LENGTH_LONG).show()
+                    }
+                }else{
+                    var timer = Timer(this@MainActivity,task)
+                    timer.running=task.isRunning
+                    timer.taskTime=task.taskTime
+                    timer.startTimer()
+                    task.isRunning=timer.running
+                    viewModel.updateTask(task)
+                    Log.d("TAG2", "$task ")
+                    if (task.isRunning == false){
+                        taskT.stop()
+                    }
+                }
+            }
+        }
 
-        task.isRunning=timer.running
-        viewModel.updateTask(task)
-        Log.d("TAG2", "$task ")
+//        var timer = Timer(this,task)
+//        timer.running=task.isRunning
+//        timer.taskTime=task.taskTime
+//        timer.startTimer()
+//        task.isRunning=timer.running
+//        viewModel.updateTask(task)
+//        Log.d("TAG2", "$task ")
     }
 
     override fun pauseTime(task: TaskTable) {
+        lastTask = task
+        var timer = Timer(this,task)
         timer.running=task.isRunning
         timer.taskTime=task.taskTime
         timer.pauseTimer()
-        task.taskTime=timer.taskTime
+        taskT.stop()
+        task.taskTime=   SystemClock.elapsedRealtime() - taskT.base //
         task.isRunning=timer.running
         viewModel.updateTask(task)
         Log.d("TAG1", "$task ")
+        if (task.isRunning == false){
+            taskT.stop()
+        }
     }
+
+    override fun restartTime(task: TaskTable) {
+
+        var timer = Timer(this,task)
+        timer.taskTime=task.taskTime
+        timer.restart()
+
+        task.taskTime=timer.taskTime
+        viewModel.updateTask(task)
+
+        Log.d("restart", "$task ")
+    }
+
+
+
 
 
 }

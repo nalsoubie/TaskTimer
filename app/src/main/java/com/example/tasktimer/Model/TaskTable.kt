@@ -11,5 +11,5 @@ data class TaskTable(
     val taskDescription: String, //
     var taskTime: Long, //
     val priority: String, //
-    var isRunning: Boolean = false //
+    var isRunning: Boolean = false, //
 )

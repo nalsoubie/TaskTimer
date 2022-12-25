@@ -43,7 +43,11 @@ class MainViewModel (application: Application): AndroidViewModel(application) {
     }
     fun getTasks():LiveData<List<TaskTable>>{
         return repository.getTasks()
+    } // old
+    fun getTasksBloean():List<TaskTable>{
+        return repository.getTasksBloean()
     }
+
 
 //    fun updateTime(time:Long, pk:Int){
 //        CoroutineScope(Dispatchers.IO).launch {

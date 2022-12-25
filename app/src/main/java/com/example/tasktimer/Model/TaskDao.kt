@@ -9,6 +9,9 @@ interface TaskDao {
     @Query("SELECT * FROM Tasks ORDER BY priority")
     fun getAllTasks(): LiveData<List<TaskTable>>
 
+    @Query("SELECT * FROM Tasks ORDER BY priority")
+    fun getAllTasksBoolean():List<TaskTable>
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun addNewTask(task: TaskTable)
 
