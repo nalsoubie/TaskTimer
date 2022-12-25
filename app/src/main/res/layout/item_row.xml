@@ -9,8 +9,8 @@
     android:id="@+id/cardView"
     android:background="@color/primaryColor"
     app:contentPadding="10dp"
-
-    android:layout_height="150dp">
+    android:layout_height="200dp"
+    android:layout_marginBottom="20dp">
 
 
 
@@ -26,7 +26,6 @@
         android:layout_weight="0.2"
         android:layout_gravity="center"
         android:layout_marginLeft="10dp"
-
         android:layout_marginRight="10dp"
         android:orientation="vertical">
 
