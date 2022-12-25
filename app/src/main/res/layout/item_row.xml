@@ -82,7 +82,7 @@
                 android:paddingTop="5dp"
                 android:paddingRight="10dp"
                 android:paddingBottom="5dp"
-                android:text="00:11"
+                android:text="00:00"
                 android:textColor="@color/primaryDarkColor"
                 android:textSize="20sp" />
 
