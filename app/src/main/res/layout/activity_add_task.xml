@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".View.AddTaskActivity"
     android:gravity="center"
-    android:background="@color/background_material_light">
+    android:background="@drawable/images2">
 
 
 
@@ -24,7 +24,7 @@
             android:fontFamily="sans-serif"
             android:gravity="center"
             android:text="Enter Details"
-            android:textColor="@color/black"
+            android:textColor="@color/primaryDarkColor"
             android:textSize="36sp" />
 
         <EditText
@@ -66,7 +66,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textColor="@color/black"
+                android:textColor="@color/primaryDarkColor"
                 android:textSize="15sp"
                 android:textStyle="bold"
                 android:layout_marginStart="5dp"
@@ -95,7 +95,7 @@
             android:layout_marginBottom="50dp"
             android:textStyle="bold"
             android:textSize="20sp"
-            android:backgroundTint="@color/black"
+            android:backgroundTint="@color/primaryDarkColors"
             android:text="Save" />
 
 
