@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
                 //timer.restart()
             }
 
-            showAll.setOnClickListener {
+            total.setOnClickListener {
                 totalTime = taskT.text.toString()
                 //timer.pauseTimer()
 

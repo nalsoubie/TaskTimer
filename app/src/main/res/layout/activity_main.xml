@@ -88,26 +88,27 @@
         android:id="@+id/bAdd"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:backgroundTint="@color/primaryDarkColors"
+        android:layout_margin="20dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/list_add_ic"
-        android:layout_margin="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/showAll" />
-
-    <ImageView
-        android:id="@+id/showAll"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
         android:backgroundTint="@color/primaryDarkColors"
-        android:background="@drawable/list_view_ic"
-        android:layout_margin="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/bAdd"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/total"
+        app:layout_constraintStart_toStartOf="parent" />
 
-
-
+    <TextView
+        android:id="@+id/total"
+        android:layout_width="168dp"
+        android:layout_height="51dp"
+        android:layout_margin="20dp"
+        android:layout_marginBottom="28dp"
+        android:gravity="center"
+        android:background="@drawable/total"
+        android:textColorHint="@color/primaryDarkColor"
+        android:backgroundTint="@color/primaryDarkColors"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/bAdd" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
