@@ -10,7 +10,6 @@ import com.anychart.chart.common.dataentry.ValueDataEntry
 import com.example.tasktimer.Model.TaskTable
 import com.example.tasktimer.ViewModel.ChartRV
 import com.example.tasktimer.ViewModel.MainViewModel
-import com.example.tasktimer.ViewModel.TasksRV
 import com.example.tasktimer.databinding.ActivityChartTasksBinding
 
 
@@ -34,7 +33,7 @@ class ChartTasks_Activity : AppCompatActivity() {
 
         tasksList= arrayListOf()
         rvAdapter = ChartRV(this,tasksList)
-        binding.rvChart.adapter = rvAdapter
+        binding.rvchart.adapter = rvAdapter
 
         viewModel.getTasks().observe(this, {
             tasksList.addAll(it)
