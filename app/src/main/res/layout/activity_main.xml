@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@drawable/images"
+    android:background="@drawable/images2"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".View.MainActivity">
@@ -89,12 +89,24 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_margin="20dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/list_add_ic"
         android:backgroundTint="@color/primaryDarkColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/total"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/showAll"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_margin="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/list_view_ic"
+        android:backgroundTint="@color/primaryDarkColor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/total" />
 
     <Chronometer
         android:id="@+id/total"
@@ -102,13 +114,15 @@
         android:layout_height="51dp"
         android:layout_margin="20dp"
         android:layout_marginBottom="28dp"
-        android:gravity="center"
         android:background="@drawable/total"
-        android:textColorHint="@color/primaryDarkColor"
         android:backgroundTint="@color/primaryDarkColor"
+        android:gravity="center"
+        android:textColorHint="@color/primaryDarkColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/bAdd" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/taskName"
+        app:layout_constraintVertical_bias="1.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
