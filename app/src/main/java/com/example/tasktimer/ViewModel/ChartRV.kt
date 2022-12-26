@@ -5,18 +5,21 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tasktimer.Model.TaskTable
-import com.example.tasktimer.databinding.ItemRowBinding
+import com.example.tasktimer.databinding.ViewRvBinding
+
+
+//import com.example.tasktimer.databinding.ItemRowBinding
 
 class ChartRV (private val context: Context, private var taskList: List<TaskTable>): RecyclerView.Adapter<ChartRV.ViewHolder>() {
 
 
-    class ViewHolder(var binding: ItemRowBinding): RecyclerView.ViewHolder(binding.root){ }
+    class ViewHolder(var binding: ViewRvBinding): RecyclerView.ViewHolder(binding.root){ }
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
         return ViewHolder(
-            ItemRowBinding.inflate(
+            ViewRvBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false))
@@ -28,7 +31,7 @@ class ChartRV (private val context: Context, private var taskList: List<TaskTabl
 
         //mainActivityViewModel = ViewModelProvider(Actvitiy).get(MainViewModel::class.java)
         holder.binding.apply {
-            tilteTxt.setText("${task.taskName}")
+            title.setText("${task.taskName}")
             subjectTxt.setText("${task.taskDescription}")
 
             //timerTxt.getBase() +-

@@ -15,75 +15,84 @@
         android:layout_width="match_parent"
         android:background="@drawable/total"
         android:layout_height="wrap_content">
-        <EditText
-            android:id="@+id/taskET"
+        <TextView
+            android:text="Edit task"
+            android:textStyle="bold"
+            android:textSize="19sp"
+            android:textColor="@color/white"
+            android:padding="10dp"
+            android:elevation="15dp"
+            android:layout_gravity="center"
+            android:gravity="center"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:background="@drawable/ic_baseline_edit_24"
-            android:gravity="start"
-            android:hint="Enter Task Name"
+            android:layout_height="wrap_content"/>
+        <EditText
+            android:id="@+id/editTitle"
+            android:hint="Edit Title"
+            android:textColorHint="@color/primaryDarkColor"
             android:inputType="textPersonName"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+
             android:padding="15dp"
-            android:textColor="@color/primaryDarkColor"
-            android:textColorHint="#BFBBBB" />
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
         <EditText
-            android:id="@+id/descriptionET"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/ic_baseline_edit_24"
-            android:gravity="start"
-            android:hint="Enter Description"
-            android:inputType="textMultiLine"
+            android:id="@+id/editDesctiption"
+            android:hint="Edit Description "
+            android:textColorHint="@color/primaryDarkColor"
+            android:inputType="textPersonName"
+            android:textColor="@color/black"
             android:padding="15dp"
-            android:textColor="@color/primaryDarkColor"
-            android:layout_weight="1"
-            android:textColorHint="#BFBBBB" />
+            android:textSize="18sp"
+
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="283dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:orientation="horizontal"
-            android:padding="10dp"
-            android:gravity="center">
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="10dp">
 
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@color/white"
-                android:textSize="10sp"
-                android:textStyle="bold"
                 android:layout_marginStart="5dp"
-                android:text="Please Choose Priority" />
+                android:layout_weight="1"
+                android:text="Update Priority"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
-            <Button
-                android:id="@+id/imgRed"
+            <ImageButton
+                android:id="@+id/redPri"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="High"/>
+                android:layout_height="match_parent" />
 
-            <Button
-                android:id="@+id/imgYellow"
+            <ImageButton
+                android:id="@+id/greenPri"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="wrap_content" />
 
-                android:text="Mediam"/>
-            <Button
-                android:id="@+id/imgGreen"
+            <ImageButton
+                android:id="@+id/yellowPri"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:text="Low"
-                />
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        </LinearLayout>
 
 
 
     </LinearLayout>
 
-    </LinearLayout>
-</LinearLayout>

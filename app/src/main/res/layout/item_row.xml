@@ -40,6 +40,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:singleLine="true"
+
                 android:textColor="@color/primaryDarkColor"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -59,7 +60,6 @@
             android:layout_height="63dp"
             android:layout_marginStart="10dp"
             android:alpha="0.5"
-
             android:singleLine="true"
             android:textColor="@android:color/black"
             android:textSize="14sp"

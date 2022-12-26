@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".View.ChartTasks_Activity"
-    android:background="@color/background_material_light">
+    android:background="@drawable/images2">
 
     <ImageView
         android:id="@+id/imageView2"
@@ -35,6 +35,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pieChart"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
