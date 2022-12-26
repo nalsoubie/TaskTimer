@@ -20,9 +20,9 @@ class AddTaskActivity : AppCompatActivity() {
         binding = ActivityAddTaskBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.apply {
-            imgRed.setBackgroundColor(Color.RED)
-            imgGreen.setBackgroundColor(Color.GREEN)
-            //imgYellow.setBackgroundColor(Color.YELLOW)
+//            imgRed.setBackgroundColor(Color.RED)
+//            imgGreen.setBackgroundColor(Color.GREEN)
+//            imgYellow.setBackgroundColor(Color.YELLOW)
 
             imgRed.setOnClickListener {
                 imgRed.setBackgroundColor(Color.RED)

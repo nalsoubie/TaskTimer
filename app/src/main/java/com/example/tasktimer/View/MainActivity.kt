@@ -21,6 +21,7 @@ import com.example.tasktimer.databinding.ActivityMainBinding
 import kotlinx.coroutines.*
 
 
+
 class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
     private lateinit var binding: ActivityMainBinding
 
@@ -38,6 +39,7 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        TotalTime()
 
         taskT = binding.timer
         //timer = Timer(this)
@@ -304,24 +306,41 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
     } //pop up fun.
 
     override fun TotalTime() {
-        var totalTime = 0
+        var totalTime :Long= 1
         CoroutineScope(Dispatchers.IO).launch {
             var list = async {
                 viewModel.getTasksBloean()
             }.await()
             for (i in list) {
-                totalTime += i.taskTime.toInt()
+                totalTime += i.taskTime
                 withContext(Dispatchers.Main) {
-                    var hours = totalTime / 1000/60/60 %24
-                    var minutes = totalTime/1000/60 %60
-                    var secunds = totalTime/ 1000 %60
-                    binding.total.text = secunds.toString()+" "+minutes.toString()
+//                    var hours = totalTime / 1000/60/60 %24
+//                    var minutes = totalTime/1000/60 %60
+//                    var secunds = totalTime/ 1000 %60
+                    //var z = totalTime / 1000
+                    var x = convertSecondsToHMmSs(totalTime)
+                    Log.d("ABCD123","$totalTime")
+//                    if (secunds<10){
+//                        secunds = 0 + secunds
+//                    }
+
+
+                    binding.total.text = x
                 }
+                //hh:mm:ss
+                ;
 
 
             }
 
 
         } //main
+    }
+    override fun convertSecondsToHMmSs(miliSec: Long): String {
+        var seconds = miliSec / 1000
+        val s = seconds % 60
+        val m = seconds / 60 % 60
+        val h = seconds / (60 * 60) % 24
+        return String.format("%d:%02d:%02d", h, m, s)
     }
 }

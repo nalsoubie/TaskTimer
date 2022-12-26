@@ -33,13 +33,13 @@ class TasksRV(var clickListner: ClickListner ):RecyclerView.Adapter<TasksRV.View
             tilteTxt.setText("${task.taskName}")
             subjectTxt.setText("${task.taskDescription}")
             if (task.priority == "0red"){
-                cardView.setBackgroundColor(Color.parseColor("#DA341D"))
+                perority.setBackgroundColor(Color.parseColor("#DA341D"))
             }
             if (task.priority == "1green"){
-                cardView.setBackgroundColor(Color.GREEN)
+                perority.setBackgroundColor(Color.GREEN)
             }
             if (task.priority == "2yellow"){
-                tilteTxt.setBackgroundColor(Color.YELLOW)
+                perority.setBackgroundColor(Color.YELLOW)
             }
 
 
@@ -113,6 +113,7 @@ class TasksRV(var clickListner: ClickListner ):RecyclerView.Adapter<TasksRV.View
         fun restartTime(task: TaskTable)
         fun popUpMenu(task: TaskTable)
         fun TotalTime()
+        fun convertSecondsToHMmSs(miliSec: Long):String
 
 
         //fun startTime(running:Boolean, tasktiming:Long, pk:Int)
