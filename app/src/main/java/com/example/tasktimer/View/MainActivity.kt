@@ -23,10 +23,10 @@ import kotlinx.coroutines.*
 
 class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
     private lateinit var binding: ActivityMainBinding
-    private lateinit var progressBar: ProgressBar
+
     private lateinit var rvAdapter: TasksRV
     var totalTime = ""
-    var lastTask = TaskTable(2,"2","da",5,"a",false)
+    var lastTask = TaskTable(2, "2", "da", 5, "a", false)
 
 
     lateinit var taskT: Chronometer
@@ -39,13 +39,13 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        taskT=binding.timer
+        taskT = binding.timer
         //timer = Timer(this)
 
         rvAdapter = TasksRV(this)
         binding.rvItems.adapter = rvAdapter
 
-        lastTask = TaskTable(2,"2","da",5,"a",false)
+        lastTask = TaskTable(2, "2", "da", 5, "a", false)
         viewModel.getTasks().observe(this, { taskslist ->
             rvAdapter.update(taskslist)
         }) //view model
@@ -66,11 +66,9 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
                 var intent = Intent(this@MainActivity, ChartTasks_Activity::class.java)
                 startActivity(intent)
 
-                Log.d("checkthis","$totalTime")
+                Log.d("checkthis", "$totalTime")
             } //show all btn
         }// apply
-
-
 
 
     }//end create
@@ -102,44 +100,46 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
 //    }
 
     //________________________________________________________/
-    fun splitTime(num:Long):String{
-        var hours:Int = (num /60).toInt()
-        var minute = num /60
+    fun splitTime(num: Long): String {
+        var hours: Int = (num / 60).toInt()
+        var minute = num / 60
         var sec = num
 
-        if (sec.toInt() == 60){
+        if (sec.toInt() == 60) {
         }
         return " "
     }
 
     override fun startTime(task: TaskTable, list: List<TaskTable>) {
-        Log.d("ds","sd")
+        Log.d("ds", "sd")
 
 
         CoroutineScope(Dispatchers.IO).launch {
             var list = async {
                 viewModel.getTasksBloean()
             }.await()
-            for (i in list){
-                if (i.isRunning == true){
+            for (i in list) {
+                if (i.isRunning == true) {
                     lastTask = i
-                  //  progressBar.isIndeterminate = false
-                   // progressBar.isIndeterminate = true
-                    Log.d("TAG0100","$lastTask,$i")
+                    Log.d("TAG0100", "$lastTask,$i")
                     pauseTime(lastTask)
                     // fun pause that object
-                    withContext(Dispatchers.Main){
-                        Toast.makeText(this@MainActivity,"you ${lastTask.taskName}",Toast.LENGTH_LONG).show()
+                    withContext(Dispatchers.Main) {
+                        Toast.makeText(
+                            this@MainActivity,
+                            "you ${lastTask.taskName}",
+                            Toast.LENGTH_LONG
+                        ).show()
                     }
-                }else{
-                    var timer = Timer(this@MainActivity,task)
-                    timer.running=task.isRunning
-                    timer.taskTime=task.taskTime
+                } else {
+                    var timer = Timer(this@MainActivity, task)
+                    timer.running = task.isRunning
+                    timer.taskTime = task.taskTime
                     timer.startTimer()
                     task.isRunning = true
                     viewModel.updateTask(task)
                     Log.d("TAG2", "$task ")
-                    if (task.isRunning == false){
+                    if (task.isRunning == false) {
                         taskT.stop()
                     }
                 }
@@ -165,17 +165,17 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
 
     override fun pauseTime(task: TaskTable) {
         lastTask = task
-        var timer = Timer(this,task)
-        timer.running=task.isRunning
-        timer.taskTime=task.taskTime
+        var timer = Timer(this, task)
+        timer.running = task.isRunning
+        timer.taskTime = task.taskTime
         timer.pauseTimer()
         //taskT.stop() / EXtra
         task.isRunning = false
-        task.taskTime=   SystemClock.elapsedRealtime() - taskT.getBase() //
+        task.taskTime = SystemClock.elapsedRealtime() - taskT.getBase() //
         //task.isRunning=timer.running //Extra
         viewModel.updateTask(task)
         Log.d("TAG1", "$task ")
-        if (task.isRunning == false){
+        if (task.isRunning == false) {
             taskT.stop()
         }
         //binding.total.text = "Total Time\n${taskT.contentDescription}"
@@ -185,13 +185,12 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
 
     override fun restartTime(task: TaskTable) {
 
-        var timer = Timer(this,task)
-        timer.taskTime=task.taskTime
+        var timer = Timer(this, task)
+        timer.taskTime = task.taskTime
         timer.restart()
 
-        task.taskTime=timer.taskTime
+        task.taskTime = timer.taskTime
         viewModel.updateTask(task)
-
         Log.d("restart", "$task ")
 
 
@@ -199,19 +198,19 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
 
     override fun popUpMenu(task: TaskTable) {
 
-        var color=""
+        var color = ""
         val inflter = LayoutInflater.from(this)
-        val layout = inflter.inflate(R.layout.dialog_pop,null)
+        val layout = inflter.inflate(R.layout.dialog_pop, null)
 
         val editTitle = layout.findViewById<EditText>(R.id.editTitle)
         val editDesc = layout.findViewById<EditText>(R.id.editDesctiption)
 
-        val refPri= layout.findViewById<ImageButton>(R.id.redPri)
-        val greenPri= layout.findViewById<ImageButton>(R.id.greenPri)
-        val yellowPri= layout.findViewById<ImageButton>(R.id.yellowPri)
+        val refPri = layout.findViewById<ImageButton>(R.id.redPri)
+        val greenPri = layout.findViewById<ImageButton>(R.id.greenPri)
+        val yellowPri = layout.findViewById<ImageButton>(R.id.yellowPri)
         refPri.setOnClickListener {
             refPri.setBackgroundColor(Color.RED)
-            color="0red"
+            color = "0red"
         }
         greenPri.setOnClickListener {
             greenPri.setBackgroundColor(Color.GREEN)
@@ -224,31 +223,40 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
 
         val dialogBuilder = AlertDialog.Builder(this)
 
-        val popupMenu = PopupMenu(this , binding.rvItems.findViewById(R.id.options))
+        val popupMenu = PopupMenu(this, binding.rvItems.findViewById(R.id.options))
         // add the menu
         popupMenu.inflate(R.menu.menu)
         // implement on menu item click Listener
-        popupMenu.setOnMenuItemClickListener(object : PopupMenu.OnMenuItemClickListener{
+        popupMenu.setOnMenuItemClickListener(object : PopupMenu.OnMenuItemClickListener {
             override fun onMenuItemClick(item: MenuItem?): Boolean {
-                when(item?.itemId){
+                when (item?.itemId) {
                     R.id.editbtn -> {
                         dialogBuilder
                             .setPositiveButton("Edit") { dialog, _ ->
 
-                                if (editTitle.text.toString().isEmpty()&& editDesc.text.toString().isEmpty() ){
+                                if (editTitle.text.toString().isEmpty() && editDesc.text.toString()
+                                        .isEmpty()
+                                ) {
                                     editTitle.setError("Please provide a name.")
                                     editTitle.requestFocus()
                                     editDesc.setError("Please provide a name.")
                                     editDesc.requestFocus()
-                                    Toast.makeText(this@MainActivity,"Need ti fill all boxes", Toast.LENGTH_SHORT).show()
+                                    Toast.makeText(
+                                        this@MainActivity,
+                                        "Need ti fill all boxes",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
                                 }// if
-                                else{
-                                    task.taskName= editTitle.text.toString()
-                                    task.taskDescription=editDesc.text.toString()
-                                    task.priority=color
+                                else {
+                                    task.taskName = editTitle.text.toString()
+                                    task.taskDescription = editDesc.text.toString()
+                                    task.priority = color
                                     viewModel.updateTask(task)
                                     Toast.makeText(
-                                        this@MainActivity, "Task has been updated", Toast.LENGTH_SHORT).show()
+                                        this@MainActivity,
+                                        "Task has been updated",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
 
 
                                 }//else
@@ -258,7 +266,7 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
                                 dialog.dismiss()
                             }
                         val alert = dialogBuilder.create()
-                       // alert.setTitle("Update Task")
+                        alert.setTitle("Update Task")
                         alert.setView(layout)
                         alert.show()
 
@@ -293,8 +301,27 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
         popupMenu.show()
 
 
-    } //pop up fun
+    } //pop up fun.
+
+    override fun TotalTime() {
+        var totalTime = 0
+        CoroutineScope(Dispatchers.IO).launch {
+            var list = async {
+                viewModel.getTasksBloean()
+            }.await()
+            for (i in list) {
+                totalTime += i.taskTime.toInt()
+                withContext(Dispatchers.Main) {
+                    var hours = totalTime / 1000/60/60 %24
+                    var minutes = totalTime/1000/60 %60
+                    var secunds = totalTime/ 1000 %60
+                    binding.total.text = secunds.toString()+" "+minutes.toString()
+                }
 
 
+            }
 
-} //main
+
+        } //main
+    }
+}

@@ -1,6 +1,7 @@
 package com.example.tasktimer.ViewModel
 
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -31,6 +32,17 @@ class TasksRV(var clickListner: ClickListner ):RecyclerView.Adapter<TasksRV.View
         holder.binding.apply {
             tilteTxt.setText("${task.taskName}")
             subjectTxt.setText("${task.taskDescription}")
+            if (task.priority == "0red"){
+                cardView.setBackgroundColor(Color.parseColor("#DA341D"))
+            }
+            if (task.priority == "1green"){
+                cardView.setBackgroundColor(Color.GREEN)
+            }
+            if (task.priority == "2yellow"){
+                tilteTxt.setBackgroundColor(Color.YELLOW)
+            }
+
+
             //timerTxt.getBase() +-
             //
 
@@ -41,6 +53,7 @@ class TasksRV(var clickListner: ClickListner ):RecyclerView.Adapter<TasksRV.View
                 //if(task.isRunning==false){
 
                 clickListner.startTime(task,taskList)
+                clickListner.TotalTime()
                 var hours = task.taskTime / 1000/60/60 %24
                 var minutes = task.taskTime/1000/60 %60
                 var secunds = task.taskTime/ 1000 %60
@@ -66,18 +79,16 @@ class TasksRV(var clickListner: ClickListner ):RecyclerView.Adapter<TasksRV.View
                 var minutes = task.taskTime/1000/60 %60
                 var secunds = task.taskTime/ 1000 %60
                 var time = StringBuilder()
-                if (secunds<10 ){
-                    time.append(hours).append(":").append(minutes).append(":").append("0").append(secunds)
-
-                }else{
-                    time.append(hours).append(":").append(minutes).append(":").append(secunds)
-                }
                 time.append(hours).append(":").append(minutes).append(":").append(secunds)
                 timerTxt.text= time.toString()
+
+
+                clickListner.TotalTime()
                 //timerTxt.base = SystemClock.elapsedRealtime() - (task.taskTime)
             }
             restarbtn.setOnClickListener {
                 clickListner.restartTime(task)
+                clickListner.TotalTime()
                 //timerTxt.setBase(SystemClock.elapsedRealtime())
                 ///timerTxt.base = SystemClock.elapsedRealtime() - (task.taskTime)
             }
@@ -101,6 +112,8 @@ class TasksRV(var clickListner: ClickListner ):RecyclerView.Adapter<TasksRV.View
         fun pauseTime(task:TaskTable)
         fun restartTime(task: TaskTable)
         fun popUpMenu(task: TaskTable)
+        fun TotalTime()
+
 
         //fun startTime(running:Boolean, tasktiming:Long, pk:Int)
         //fun pauseTime(running:Boolean, tasktiming:Long)
