@@ -15,11 +15,6 @@ class Timer(var context: MainActivity,var task:TaskTable) {
     // check if the task is running
     var running = task.isRunning
 
-
-
-
-
-
     fun startTimer() {
         if (running == false) {
             context!!.runOnUiThread {

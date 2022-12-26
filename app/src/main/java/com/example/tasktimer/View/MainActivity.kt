@@ -62,7 +62,7 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
                 //timer.restart()
             }
 
-            total.setOnClickListener {
+            showAll.setOnClickListener {
                 totalTime = taskT.text.toString()
                 //timer.pauseTimer()
                 var intent = Intent(this@MainActivity, ChartTasks_Activity::class.java)
