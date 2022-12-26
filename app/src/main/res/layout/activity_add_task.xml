@@ -75,15 +75,24 @@
            <ImageButton
                android:id="@+id/imgRed"
                android:layout_width="wrap_content"
-               android:layout_height="match_parent"/>
+               android:layout_height="match_parent"
+               android:backgroundTint="#E13535"
+
+               />
+
             <ImageButton
                 android:id="@+id/imgGreen"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                tools:ignore="TouchTargetSizeCheck"
+                android:backgroundTint="#47EC9B"/>
+
             <ImageButton
                 android:id="@+id/img_yellow"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                tools:ignore="TouchTargetSizeCheck"
+                android:backgroundTint="#FFFF00"/>
 
         </LinearLayout>
 
@@ -95,7 +104,8 @@
             android:layout_marginBottom="50dp"
             android:textStyle="bold"
             android:textSize="20sp"
-            android:backgroundTint="@color/primaryDarkColors"
+            android:background="@drawable/total"
+            android:backgroundTint="@color/primaryDarkColor"
             android:text="Save" />
 
 

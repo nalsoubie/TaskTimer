@@ -23,7 +23,7 @@ import kotlinx.coroutines.*
 
 class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
     private lateinit var binding: ActivityMainBinding
-
+    private lateinit var progressBar: ProgressBar
     private lateinit var rvAdapter: TasksRV
     var totalTime = ""
     var lastTask = TaskTable(2,"2","da",5,"a",false)
@@ -123,6 +123,8 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
             for (i in list){
                 if (i.isRunning == true){
                     lastTask = i
+                  //  progressBar.isIndeterminate = false
+                   // progressBar.isIndeterminate = true
                     Log.d("TAG0100","$lastTask,$i")
                     pauseTime(lastTask)
                     // fun pause that object
@@ -256,7 +258,7 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
                                 dialog.dismiss()
                             }
                         val alert = dialogBuilder.create()
-                        alert.setTitle("Update Task")
+                       // alert.setTitle("Update Task")
                         alert.setView(layout)
                         alert.show()
 

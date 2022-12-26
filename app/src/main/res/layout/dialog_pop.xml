@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     android:orientation="vertical"
     android:gravity="center"
     >
@@ -12,13 +13,13 @@
         android:orientation="vertical"
         android:layout_margin="16dp"
         android:layout_width="match_parent"
+        android:background="@drawable/total"
         android:layout_height="wrap_content">
         <TextView
             android:text="Edit task"
             android:textStyle="bold"
             android:textSize="19sp"
             android:textColor="@color/white"
-            android:background="@color/primaryDarkColors"
             android:padding="10dp"
             android:elevation="15dp"
             android:layout_gravity="center"
@@ -28,8 +29,9 @@
         <EditText
             android:id="@+id/editTitle"
             android:hint="Edit Title"
+            android:textColorHint="@color/primaryDarkColor"
             android:inputType="textPersonName"
-            android:textColor="@color/primaryDarkColor"
+            android:textColor="@color/black"
             android:textSize="18sp"
 
             android:padding="15dp"
@@ -43,8 +45,9 @@
         <EditText
             android:id="@+id/editDesctiption"
             android:hint="Edit Description "
+            android:textColorHint="@color/primaryDarkColor"
             android:inputType="textPersonName"
-            android:textColor="@color/primaryDarkColor"
+            android:textColor="@color/black"
             android:padding="15dp"
             android:textSize="18sp"
 
@@ -54,41 +57,42 @@
             android:layout_marginBottom="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
+
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="283dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="10dp">
 
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@color/primaryDarkColor"
-                android:textSize="15sp"
-                android:textStyle="bold"
                 android:layout_marginStart="5dp"
-                android:text="Update Priority" />
+                android:layout_weight="1"
+                android:text="Update Priority"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
             <ImageButton
                 android:id="@+id/redPri"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent" />
+
             <ImageButton
                 android:id="@+id/greenPri"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
+
             <ImageButton
                 android:id="@+id/yellowPri"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
+                android:layout_height="wrap_content" />
+        </LinearLayout>
         </LinearLayout>
 
 
 
     </LinearLayout>
 
-</LinearLayout>

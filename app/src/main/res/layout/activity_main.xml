@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@drawable/images2"
+    android:background="@drawable/images"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".View.MainActivity">
@@ -91,7 +91,7 @@
         android:layout_margin="20dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/list_add_ic"
-        android:backgroundTint="@color/primaryDarkColors"
+        android:backgroundTint="@color/primaryDarkColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/total"
         app:layout_constraintStart_toStartOf="parent" />
@@ -105,7 +105,7 @@
         android:gravity="center"
         android:background="@drawable/total"
         android:textColorHint="@color/primaryDarkColor"
-        android:backgroundTint="@color/primaryDarkColors"
+        android:backgroundTint="@color/primaryDarkColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/bAdd" />
