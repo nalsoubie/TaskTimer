@@ -8,7 +8,7 @@
             android:thicknessRatio="16"
             android:useLevel="false">
 
-            <solid android:color="@color/primaryDarkColor"/>
+            <solid android:color="@color/primaryDarkColors"/>
 
         </shape>
     </item>
