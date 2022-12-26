@@ -83,14 +83,14 @@
                 android:text="High" />
 
             <Button
-                android:id="@+id/imgGreen"
+                android:id="@+id/imgYellow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Med"
                 tools:ignore="TouchTargetSizeCheck" />
 
             <Button
-                android:id="@+id/imgYellow"
+                android:id="@+id/imgGreen"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="low"
@@ -103,7 +103,6 @@
             android:id="@+id/save_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:background="@drawable/total"
             android:backgroundTint="@color/primaryDarkColor"
             android:text="Save"
@@ -114,7 +113,7 @@
             android:id="@+id/button2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:text="Cancel" />
 
 
     </LinearLayout>

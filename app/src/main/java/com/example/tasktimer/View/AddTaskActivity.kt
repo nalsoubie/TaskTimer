@@ -22,6 +22,9 @@ class AddTaskActivity : AppCompatActivity() {
         binding = ActivityAddTaskBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.apply {
+            button2.setOnClickListener {
+                intentToMain()
+            }
 //            imgRed.setBackgroundColor(Color.RED)
 //            imgGreen.setBackgroundColor(Color.GREEN)
 //            imgYellow.setBackgroundColor(Color.YELLOW)
@@ -36,14 +39,15 @@ class AddTaskActivity : AppCompatActivity() {
             }
             imgGreen.setOnClickListener {
                 imgGreen.setBackgroundColor(Color.parseColor("#b7ffc4"))
-                color = "1green"
+                color = "2green"
+                //"#b7ffc4"
 
                 imgYellow.setBackgroundColor(Color.GRAY)
                 imgRed.setBackgroundColor(Color.GRAY)
             }
             imgYellow.setOnClickListener {
                 imgYellow.setBackgroundColor(Color.parseColor("#fff6c6"))
-                color = "2yellow"
+                color = "1yellow"
 
                 imgGreen.setBackgroundColor(Color.GRAY)
                 imgRed.setBackgroundColor(Color.GRAY)
@@ -55,10 +59,11 @@ class AddTaskActivity : AppCompatActivity() {
                 if (taskName.isNotEmpty() && taskSubject.isNotEmpty() && color.length > 1) {
                     var task = TaskTable(0, taskName, taskSubject, 0, color, false)
                     viewModel.addTask(task)
+                    intentToMain()
 
                 }
-                var intentBack = Intent(this@AddTaskActivity,MainActivity::class.java)
-                startActivity(intentBack)
+//                var intentBack = Intent(this@AddTaskActivity,MainActivity::class.java)
+//                startActivity(intentBack)
             }
 
 
@@ -67,5 +72,8 @@ class AddTaskActivity : AppCompatActivity() {
 
     }//end create
 
-
+    fun intentToMain(){
+        var intentToMain = Intent(this,MainActivity::class.java)
+        startActivity(intentToMain)
+    }
 }// end main

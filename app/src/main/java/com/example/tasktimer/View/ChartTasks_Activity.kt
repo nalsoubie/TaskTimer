@@ -1,6 +1,7 @@
 package com.example.tasktimer.View
 
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -30,8 +31,10 @@ class ChartTasks_Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding= ActivityChartTasksBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-
+        // btn id = cancelBtn
+//         binding.cancelBtn.setOnClickListener {
+//        intentToMain()
+//                    }
         tasksList= arrayListOf()
         rvAdapter = ChartRV(this,tasksList)
         binding.rvchart.adapter = rvAdapter
@@ -54,5 +57,9 @@ class ChartTasks_Activity : AppCompatActivity() {
         }
         pie.data(dataEntries)
         binding.pieChart.setChart(pie)
+    }
+    fun intentToMain(){
+        var intentToMain = Intent(this,MainActivity::class.java)
+        startActivity(intentToMain)
     }
 }

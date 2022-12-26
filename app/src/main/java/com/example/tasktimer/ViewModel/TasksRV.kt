@@ -35,18 +35,16 @@ class TasksRV(var clickListner: ClickListner ):RecyclerView.Adapter<TasksRV.View
                 perority.setImageResource(R.drawable.high_priority)
 
             }
-            if (task.priority == "1green"){
+            if (task.priority == "2green"){
 
                 perority.setImageResource(R.drawable.low_priority)
             }
-            if (task.priority == "2yellow"){
+            if (task.priority == "1yellow"){
 
                 perority.setImageResource(R.drawable.med_priority)
             }
 
             cardView.setOnClickListener {
-
-
                 clickListner.startTime(task,taskList)
                 clickListner.TotalTime()
                 var hours = task.taskTime / 1000/60/60 %24
