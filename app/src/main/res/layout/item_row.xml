@@ -105,15 +105,12 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_baseline_restart_alt_24" />
 
-            <Button
+            <ImageView
                 android:id="@+id/perority"
-                android:layout_width="53dp"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="100dp"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/watch_vik" />
-
-
+                android:layout_marginLeft="70dp"
+                 />
 
 
         </LinearLayout>

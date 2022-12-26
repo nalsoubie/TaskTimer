@@ -26,36 +26,26 @@ class AddTaskActivity : AppCompatActivity() {
 //            imgYellow.setBackgroundColor(Color.YELLOW)
 
             imgRed.setOnClickListener {
-                imgRed.setBackgroundColor(Color.RED)
+                imgRed.setBackgroundColor(Color.parseColor("#ff5d73"))
                 color = "0red"
-                imgRed.isEnabled=true
-                imgGreen.isEnabled=false
-                imgYellow.isEnabled=false
 
-//                imgGreen.setBackgroundColor(Color.GRAY)
-//                imgYellow.setBackgroundColor(Color.GRAY)
+                imgGreen.setBackgroundColor(Color.GRAY)
+                imgYellow.setBackgroundColor(Color.GRAY)
                 // try to name it with 0 to 3 to accend in RV
             }
             imgGreen.setOnClickListener {
-                imgGreen.setBackgroundColor(Color.GREEN)
+                imgGreen.setBackgroundColor(Color.parseColor("#b7ffc4"))
                 color = "1green"
 
-                imgRed.isEnabled=false
-                imgGreen.isEnabled=true
-                imgYellow.isEnabled=false
-
-//                imgYellow.setBackgroundColor(Color.GRAY)
-//                imgRed.setBackgroundColor(Color.GRAY)
+                imgYellow.setBackgroundColor(Color.GRAY)
+                imgRed.setBackgroundColor(Color.GRAY)
             }
             imgYellow.setOnClickListener {
-                imgYellow.setBackgroundColor(Color.YELLOW)
+                imgYellow.setBackgroundColor(Color.parseColor("#fff6c6"))
                 color = "2yellow"
 
-                imgRed.isEnabled=false
-                imgGreen.isEnabled=false
-                imgYellow.isEnabled=true
-//                imgGreen.setBackgroundColor(Color.GRAY)
-//                imgRed.setBackgroundColor(Color.GRAY)
+                imgGreen.setBackgroundColor(Color.GRAY)
+                imgRed.setBackgroundColor(Color.GRAY)
             }
 
             saveButton.setOnClickListener {

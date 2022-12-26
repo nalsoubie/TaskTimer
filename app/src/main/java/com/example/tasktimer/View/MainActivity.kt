@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
 
 
     lateinit var taskT: Chronometer
-    //lateinit var timer: Timer
+
 
     val viewModel by lazy { ViewModelProvider(this).get(MainViewModel::class.java) }
 
@@ -213,19 +213,19 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
         val greenPri = layout.findViewById<Button>(R.id.imgGreen)
         val yellowPri = layout.findViewById<Button>(R.id.imgYellow)
         refPri.setOnClickListener {
-            refPri.setBackgroundColor(Color.RED)
+            refPri.setBackgroundColor(Color.parseColor("#ff5d73"))
             color = "0red"
             greenPri.setBackgroundColor(Color.GRAY)
             yellowPri.setBackgroundColor(Color.GRAY)
         }
         greenPri.setOnClickListener {
-            greenPri.setBackgroundColor(Color.GREEN)
+            greenPri.setBackgroundColor(Color.parseColor("#b7ffc4"))
             color = "1yellow"
             refPri.setBackgroundColor(Color.GRAY)
             yellowPri.setBackgroundColor(Color.GRAY)
         }
         yellowPri.setOnClickListener {
-            yellowPri.setBackgroundColor(Color.YELLOW)
+            yellowPri.setBackgroundColor(Color.parseColor("#fff6c6"))
             color = "2green"
             refPri.setBackgroundColor(Color.GRAY)
             greenPri.setBackgroundColor(Color.GRAY)
