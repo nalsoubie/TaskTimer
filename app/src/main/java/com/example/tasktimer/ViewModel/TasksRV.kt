@@ -26,40 +26,84 @@ class TasksRV(var clickListner: ClickListner ):RecyclerView.Adapter<TasksRV.View
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         var task =taskList[position]
+
+
+        //mainActivityViewModel = ViewModelProvider(Actvitiy).get(MainViewModel::class.java)
         holder.binding.apply {
             tilteTxt.setText("${task.taskName}")
             subjectTxt.setText("${task.taskDescription}")
-            timerTxt.text= convertSecondsToHMmSs(task.taskTime)
-//            if (task.priority == "0red"){
-//                perority.setBackgroundColor(Color.parseColor("#DA341D"))
-//            }
-//            if (task.priority == "2green"){
-//                perority.setBackgroundColor(Color.GREEN)
-//            }
-//            if (task.priority == "1yellow"){
-//                perority.setBackgroundColor(Color.YELLOW)
-//            }
+            if (task.priority == "0red"){
+                perority
+                //perority.setColorFilter(Color.RED)
+                //perority.setBackgroundColor(Color.parseColor("#DA341D"))
+            }
+            if (task.priority == "1green"){
+                perority.setBackgroundColor(Color.GREEN)
+            }
+            if (task.priority == "2yellow"){
+                perority.setBackgroundColor(Color.YELLOW)
+            }
+
+
+            //timerTxt.getBase() +-
+            //
+
+            //timerTxt.setBase(SystemClock.elapsedRealtime())
             cardView.setOnClickListener {
+                //timerTxt.setBase(SystemClock.elapsedRealtime()- task.taskTime)
+                //
+                //if(task.isRunning==false){
+
                 clickListner.startTime(task,taskList)
                 clickListner.TotalTime()
-                timerTxt.text= convertSecondsToHMmSs(task.taskTime)
+                var hours = task.taskTime / 1000/60/60 %24
+                var minutes = task.taskTime/1000/60 %60
+                var secunds = task.taskTime/ 1000 %60
+                var time = StringBuilder()
+                time.append(hours).append(":").append(minutes).append(":").append(secunds)
+                timerTxt.text= time.toString()
+
+
+
+
+                //timerTxt.text= task.taskTime.toString()
+                    //timerTxt.
+               //timerTxt.base = SystemClock.elapsedRealtime() - (task.taskTime)
+                //}
+               // else{
+                   // Toast.makeText()
+                    //Log.d("TAG", "is running ${task.isRunning} ")
+               // }
             }
             pausebtn.setOnClickListener {
                 clickListner.pauseTime(task)
-                timerTxt.text= convertSecondsToHMmSs(task.taskTime)
+                var hours = task.taskTime / 1000/60/60 %24
+                var minutes = task.taskTime/1000/60 %60
+                var secunds = task.taskTime/ 1000 %60
+                var time = StringBuilder()
+                time.append(hours).append(":").append(minutes).append(":").append(secunds)
+                timerTxt.text= time.toString()
+
+
                 clickListner.TotalTime()
+                //timerTxt.base = SystemClock.elapsedRealtime() - (task.taskTime)
             }
             restarbtn.setOnClickListener {
                 clickListner.restartTime(task)
                 clickListner.TotalTime()
-                timerTxt.text= convertSecondsToHMmSs(task.taskTime)
+                //timerTxt.setBase(SystemClock.elapsedRealtime())
+                ///timerTxt.base = SystemClock.elapsedRealtime() - (task.taskTime)
             }
+
             options.setOnClickListener {
                 clickListner.popUpMenu(task)
             }
+
         }
     }
+
     override fun getItemCount()= taskList.size
+
     fun update(newlist : List<TaskTable>){
         taskList = newlist
         notifyDataSetChanged()
@@ -71,39 +115,11 @@ class TasksRV(var clickListner: ClickListner ):RecyclerView.Adapter<TasksRV.View
         fun restartTime(task: TaskTable)
         fun popUpMenu(task: TaskTable)
         fun TotalTime()
-        //fun convertSecondsToHMmSss(miliSec: Long):String
+       // fun convertSecondsToHMmSs(miliSec: Long):String
+
+
         //fun startTime(running:Boolean, tasktiming:Long, pk:Int)
         //fun pauseTime(running:Boolean, tasktiming:Long)
     }// interface
 
 } //end RV
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-fun convertSecondsToHMmSs(miliSec: Long): String {
-    var seconds = miliSec / 1000
-    val s = seconds % 60
-    val m = seconds / 60 % 60
-    val h = seconds / (60 * 60) % 24
-    return String.format("%d:%02d:%02d", h, m, s)
-}

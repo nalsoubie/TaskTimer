@@ -15,6 +15,7 @@ class AddTaskActivity : AppCompatActivity() {
     private val viewModel by lazy { ViewModelProvider(this).get(MainViewModel::class.java) }
     var color = " "
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAddTaskBinding.inflate(layoutInflater)
@@ -27,21 +28,34 @@ class AddTaskActivity : AppCompatActivity() {
             imgRed.setOnClickListener {
                 imgRed.setBackgroundColor(Color.RED)
                 color = "0red"
-                imgGreen.setBackgroundColor(Color.GRAY)
-                imgYellow.setBackgroundColor(Color.GRAY)
+                imgRed.isEnabled=true
+                imgGreen.isEnabled=false
+                imgYellow.isEnabled=false
+
+//                imgGreen.setBackgroundColor(Color.GRAY)
+//                imgYellow.setBackgroundColor(Color.GRAY)
                 // try to name it with 0 to 3 to accend in RV
             }
             imgGreen.setOnClickListener {
                 imgGreen.setBackgroundColor(Color.GREEN)
-                color = "2green"
-                imgYellow.setBackgroundColor(Color.GRAY)
-                imgRed.setBackgroundColor(Color.GRAY)
+                color = "1green"
+
+                imgRed.isEnabled=false
+                imgGreen.isEnabled=true
+                imgYellow.isEnabled=false
+
+//                imgYellow.setBackgroundColor(Color.GRAY)
+//                imgRed.setBackgroundColor(Color.GRAY)
             }
             imgYellow.setOnClickListener {
                 imgYellow.setBackgroundColor(Color.YELLOW)
-                color = "1yellow"
-                imgGreen.setBackgroundColor(Color.GRAY)
-                imgRed.setBackgroundColor(Color.GRAY)
+                color = "2yellow"
+
+                imgRed.isEnabled=false
+                imgGreen.isEnabled=false
+                imgYellow.isEnabled=true
+//                imgGreen.setBackgroundColor(Color.GRAY)
+//                imgRed.setBackgroundColor(Color.GRAY)
             }
 
             saveButton.setOnClickListener {

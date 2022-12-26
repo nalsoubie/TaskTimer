@@ -105,7 +105,7 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_baseline_restart_alt_24" />
 
-            <ImageView
+            <Button
                 android:id="@+id/perority"
                 android:layout_width="53dp"
                 android:layout_height="wrap_content"

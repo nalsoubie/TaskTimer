@@ -35,6 +35,8 @@ class ChartTasks_Activity : AppCompatActivity() {
         rvAdapter = ChartRV(this,tasksList)
         binding.rvchart.adapter = rvAdapter
 
+
+
         viewModel.getTasks().observe(this, {
             tasksList.addAll(it)
             rvAdapter.update(tasksList)
