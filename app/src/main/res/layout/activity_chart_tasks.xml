@@ -7,6 +7,8 @@
     tools:context=".View.ChartTasks_Activity"
     android:background="@drawable/images2">
 
+
+
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="match_parent"
@@ -16,7 +18,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        />
+        tools:ignore="ImageContrastCheck"
+        android:contentDescription="TODO" />
+
 
     <com.anychart.AnyChartView
         android:id="@+id/pieChart"
@@ -37,5 +41,13 @@
         app:layout_constraintTop_toBottomOf="@+id/pieChart"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         />
+    <ImageButton
+        android:id="@+id/cancelBtn"
+        android:layout_width="39dp"
+        android:layout_height="28dp"
+        android:background="@drawable/ic_baseline_keyboard_backspace_24"
+        android:text="Cancel"
+        android:backgroundTint="@color/primaryDarkColor"
+        tools:ignore="MissingConstraints"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

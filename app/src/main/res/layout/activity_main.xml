@@ -91,7 +91,7 @@
         android:layout_margin="20dp"
         android:layout_marginBottom="8dp"
         android:background="@drawable/list_add_ic"
-        android:backgroundTint="@color/primaryDarkColor"
+        android:backgroundTint="@color/primaryDarkColors"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/total"
         app:layout_constraintStart_toStartOf="parent" />
@@ -103,7 +103,7 @@
         android:layout_margin="20dp"
         android:layout_marginBottom="20dp"
         android:background="@drawable/bi_chart"
-        android:backgroundTint="@color/primaryDarkColor"
+        android:backgroundTint="@color/primaryDarkColors"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/total" />

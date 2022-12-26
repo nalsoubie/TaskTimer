@@ -32,9 +32,9 @@ class ChartTasks_Activity : AppCompatActivity() {
         binding= ActivityChartTasksBinding.inflate(layoutInflater)
         setContentView(binding.root)
         // btn id = cancelBtn
-//         binding.cancelBtn.setOnClickListener {
-//        intentToMain()
-//                    }
+          binding.cancelBtn.setOnClickListener {
+          intentToMain()
+                 }
         tasksList= arrayListOf()
         rvAdapter = ChartRV(this,tasksList)
         binding.rvchart.adapter = rvAdapter

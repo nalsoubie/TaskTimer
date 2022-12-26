@@ -1,6 +1,7 @@
 package com.example.tasktimer.View
 
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
@@ -190,6 +191,7 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
 
 
     }
+
 
     override fun popUpMenu(task: TaskTable) {
         var color = ""

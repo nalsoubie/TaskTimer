@@ -8,6 +8,14 @@
     android:gravity="center"
     android:background="@drawable/images2">
 
+    <ImageButton
+        android:id="@+id/button2"
+        android:layout_width="39dp"
+        android:layout_height="28dp"
+        android:background="@drawable/ic_baseline_keyboard_backspace_24"
+        android:text="Cancel"
+        android:backgroundTint="@color/primaryDarkColor"
+        tools:ignore="MissingConstraints" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -109,11 +117,7 @@
             android:textSize="20sp"
             android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Cancel" />
+
 
 
     </LinearLayout>
