@@ -33,13 +33,13 @@ class AddTaskActivity : AppCompatActivity() {
             }
             imgGreen.setOnClickListener {
                 imgGreen.setBackgroundColor(Color.GREEN)
-                color = "1green"
+                color = "2green"
                 imgYellow.setBackgroundColor(Color.GRAY)
                 imgRed.setBackgroundColor(Color.GRAY)
             }
             imgYellow.setOnClickListener {
                 imgYellow.setBackgroundColor(Color.YELLOW)
-                color = "2yellow"
+                color = "1yellow"
                 imgGreen.setBackgroundColor(Color.GRAY)
                 imgRed.setBackgroundColor(Color.GRAY)
             }

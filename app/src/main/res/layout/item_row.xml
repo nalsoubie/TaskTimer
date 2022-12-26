@@ -10,9 +10,8 @@
     android:background="@color/primaryColor"
     app:contentPadding="10dp"
     android:layout_height="200dp"
-    android:layout_marginBottom="20dp">
-
-
+    android:layout_marginBottom="20dp"
+    >
 
     <View
         android:layout_width="0.5dp"
@@ -106,12 +105,15 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_baseline_restart_alt_24" />
 
-            <ImageButton
+            <ImageView
                 android:id="@+id/perority"
                 android:layout_width="53dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="100dp"
-                android:layout_marginTop="15dp" />
+                android:layout_marginTop="15dp"
+                android:background="@drawable/watch_vik" />
+
+
 
 
         </LinearLayout>

@@ -73,30 +73,27 @@
                 android:layout_marginStart="5dp"
                 android:text="Please Choose Priority" />
 
-           <ImageButton
+           <Button
                android:id="@+id/imgRed"
                android:layout_width="wrap_content"
-               android:layout_height="match_parent"
-               android:backgroundTint="#E13535"
+               android:layout_height="wrap_content"
+               android:text="High"/>
 
-               />
-
-            <ImageButton
+            <Button
+                android:id="@+id/imgYellow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:ignore="TouchTargetSizeCheck"
+                android:text="Mediam"/>
+            <Button
                 android:id="@+id/imgGreen"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:ignore="TouchTargetSizeCheck"
-                android:backgroundTint="#47EC9B"/>
-
-            <ImageButton
-                android:id="@+id/img_yellow"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:ignore="TouchTargetSizeCheck"
-                android:backgroundTint="#FFFF00"/>
+                android:text="Low"
+                />
 
         </LinearLayout>
-
         <Button
             android:id="@+id/save_button"
             android:layout_width="match_parent"

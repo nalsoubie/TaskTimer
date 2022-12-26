@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
         TotalTime()
 
         taskT = binding.timer
-        //timer = Timer(this)
+
 
         rvAdapter = TasksRV(this)
         binding.rvItems.adapter = rvAdapter
@@ -62,7 +62,7 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
                 //timer.restart()
             }
 
-            total.setOnClickListener {
+            showAll.setOnClickListener {
                 totalTime = taskT.text.toString()
                 //timer.pauseTimer()
                 var intent = Intent(this@MainActivity, ChartTasks_Activity::class.java)
@@ -203,25 +203,39 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
         var color = ""
         val inflter = LayoutInflater.from(this)
         val layout = inflter.inflate(R.layout.dialog_pop, null)
+        val editTitle = layout.findViewById<EditText>(R.id.taskET)
+        val editDesc = layout.findViewById<EditText>(R.id.descriptionET)
+        editTitle.setText(task.taskName)
+        editDesc.setText(task.taskDescription)
 
-        val editTitle = layout.findViewById<EditText>(R.id.editTitle)
-        val editDesc = layout.findViewById<EditText>(R.id.editDesctiption)
 
-        val refPri = layout.findViewById<ImageButton>(R.id.redPri)
-        val greenPri = layout.findViewById<ImageButton>(R.id.greenPri)
-        val yellowPri = layout.findViewById<ImageButton>(R.id.yellowPri)
+        val refPri = layout.findViewById<Button>(R.id.imgRed)
+        val greenPri = layout.findViewById<Button>(R.id.imgGreen)
+        val yellowPri = layout.findViewById<Button>(R.id.imgYellow)
         refPri.setOnClickListener {
             refPri.setBackgroundColor(Color.RED)
             color = "0red"
+            greenPri.setBackgroundColor(Color.GRAY)
+            yellowPri.setBackgroundColor(Color.GRAY)
         }
         greenPri.setOnClickListener {
             greenPri.setBackgroundColor(Color.GREEN)
-            color = "1green"
+            color = "1yellow"
+            refPri.setBackgroundColor(Color.GRAY)
+            yellowPri.setBackgroundColor(Color.GRAY)
         }
         yellowPri.setOnClickListener {
             yellowPri.setBackgroundColor(Color.YELLOW)
-            color = "2yellow"
+            color = "2green"
+            refPri.setBackgroundColor(Color.GRAY)
+            greenPri.setBackgroundColor(Color.GRAY)
         }
+        when{
+            task.priority=="0red" ->refPri.setBackgroundColor(Color.RED)
+            task.priority=="1yellow" ->yellowPri.setBackgroundColor(Color.YELLOW)
+            task.priority=="2green" ->greenPri.setBackgroundColor(Color.GREEN)
+        }
+
 
         val dialogBuilder = AlertDialog.Builder(this)
 
@@ -269,6 +283,7 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
                             }
                         val alert = dialogBuilder.create()
                         alert.setTitle("Update Task")
+                        TotalTime()
                         alert.setView(layout)
                         alert.show()
 
@@ -287,6 +302,7 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
                                     Toast.LENGTH_SHORT
                                 ).show()
                                 dialog.dismiss()
+                                TotalTime()
                             }
                             .setNegativeButton("No") { dialog, _ ->
                                 dialog.dismiss()
@@ -336,7 +352,7 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
 
         } //main
     }
-    override fun convertSecondsToHMmSs(miliSec: Long): String {
+     fun convertSecondsToHMmSs(miliSec: Long): String {
         var seconds = miliSec / 1000
         val s = seconds % 60
         val m = seconds / 60 % 60
