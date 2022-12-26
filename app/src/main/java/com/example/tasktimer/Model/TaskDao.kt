@@ -9,6 +9,15 @@ interface TaskDao {
     @Query("SELECT * FROM Tasks ORDER BY priority")
     fun getAllTasks(): LiveData<List<TaskTable>>
 
+    @Query("SELECT * FROM Tasks ORDER BY pk")
+    fun getAllTasksByID(): LiveData<List<TaskTable>>
+
+    @Query("SELECT * FROM Tasks ORDER BY taskName")
+    fun getAllTasksbyAlpa(): LiveData<List<TaskTable>>
+
+
+
+
     @Query("SELECT * FROM Tasks ORDER BY priority")
     fun getAllTasksBoolean():List<TaskTable>
 

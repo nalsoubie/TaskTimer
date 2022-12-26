@@ -54,7 +54,7 @@ class TasksRV(var clickListner: ClickListner ):RecyclerView.Adapter<TasksRV.View
                 var secunds = task.taskTime/ 1000 %60
                 var time = StringBuilder()
                 time.append(hours).append(":").append(minutes).append(":").append(secunds)
-                timerTxt.text= time.toString()
+                timerTxt.text= convertSecondsToHMmSs(task.taskTime)
 
             }
             pausebtn.setOnClickListener {
@@ -64,7 +64,7 @@ class TasksRV(var clickListner: ClickListner ):RecyclerView.Adapter<TasksRV.View
                 var secunds = task.taskTime/ 1000 %60
                 var time = StringBuilder()
                 time.append(hours).append(":").append(minutes).append(":").append(secunds)
-                timerTxt.text= time.toString()
+                timerTxt.text= convertSecondsToHMmSs(task.taskTime)
 
 
                 clickListner.TotalTime()
@@ -73,6 +73,7 @@ class TasksRV(var clickListner: ClickListner ):RecyclerView.Adapter<TasksRV.View
             restarbtn.setOnClickListener {
                 clickListner.restartTime(task)
                 clickListner.TotalTime()
+                timerTxt.text= convertSecondsToHMmSs(task.taskTime)
 
             }
 
@@ -101,3 +102,37 @@ class TasksRV(var clickListner: ClickListner ):RecyclerView.Adapter<TasksRV.View
     }// interface
 
 } //end RV
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+fun convertSecondsToHMmSs(miliSec: Long): String {
+    var seconds = miliSec / 1000
+    val s = seconds % 60
+    val m = seconds / 60 % 60
+    val h = seconds / (60 * 60) % 24
+    return String.format("%d:%02d:%02d", h, m, s)
+}

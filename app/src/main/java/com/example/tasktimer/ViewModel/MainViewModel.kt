@@ -51,6 +51,17 @@ class MainViewModel (application: Application): AndroidViewModel(application) {
     fun getTasks():LiveData<List<TaskTable>>{
         return repository.getTasks()
     } // old
+
+    fun getTasksByID():LiveData<List<TaskTable>>{
+        return repository.getTasksByID()
+    } // old
+    fun getTasksByAlpha():LiveData<List<TaskTable>>{
+        return repository.getTasksByAlpha()
+    } // old
+
+
+
+
     fun getTasksBloean():List<TaskTable>{
         return repository.getTasksBloean()
     }

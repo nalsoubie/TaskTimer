@@ -9,13 +9,15 @@
     android:background="@drawable/images2">
 
 
-
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
+        android:layout_margin="24dp"
         android:gravity="center"
-        android:layout_margin="24dp">
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="24dp"
+        tools:layout_editor_absoluteY="24dp">
 
         <TextView
             android:id="@+id/textView2"
@@ -45,55 +47,55 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:layout_weight="1"
             android:background="@drawable/ic_baseline_edit_24"
             android:gravity="start"
             android:hint="Enter Description"
             android:inputType="textMultiLine"
             android:padding="15dp"
             android:textColor="@color/primaryDarkColor"
-            android:layout_weight="1"
             android:textColorHint="#BFBBBB" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
+            android:gravity="center"
             android:orientation="horizontal"
-            android:padding="10dp"
-            android:gravity="center">
+            android:padding="10dp">
 
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
                 android:layout_weight="1"
+                android:text="Please Choose Priority"
                 android:textColor="@color/primaryDarkColor"
                 android:textSize="15sp"
-                android:textStyle="bold"
-                android:layout_marginStart="5dp"
-                android:text="Please Choose Priority" />
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/imgRed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:text="High"/>
+                android:text="High" />
 
             <Button
                 android:id="@+id/imgGreen"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:ignore="TouchTargetSizeCheck"
-                android:text="Med"/>
+                android:text="Med"
+                tools:ignore="TouchTargetSizeCheck" />
 
             <Button
                 android:id="@+id/imgYellow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:ignore="TouchTargetSizeCheck"
+                android:text="low"
 
-                android:text="low"/>
+                tools:ignore="TouchTargetSizeCheck" />
 
         </LinearLayout>
 
@@ -101,13 +103,18 @@
             android:id="@+id/save_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="50dp"
-            android:textStyle="bold"
-            android:textSize="20sp"
+
             android:background="@drawable/total"
             android:backgroundTint="@color/primaryDarkColor"
-            android:text="Save" />
+            android:text="Save"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Button" />
 
 
     </LinearLayout>

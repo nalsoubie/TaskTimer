@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.os.SystemClock
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.Menu
 import android.view.MenuItem
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
@@ -36,10 +37,12 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
     val viewModel by lazy { ViewModelProvider(this).get(MainViewModel::class.java) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        //supportActionBar?.hide()
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         TotalTime()
+
 
         taskT = binding.timer
 
@@ -74,6 +77,25 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
 
 
     }//end create
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu1,menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId){
+            R.id.bypriority -> viewModel.getTasks().observe(this, { taskslist ->
+                rvAdapter.update(taskslist)
+            })
+            R.id.byAlphatical -> viewModel.getTasksByAlpha().observe(this, { taskslist ->
+                rvAdapter.update(taskslist)
+            })
+            R.id.byID -> viewModel.getTasksByID().observe(this, { taskslist ->
+                rvAdapter.update(taskslist)
+            })
+        }
+        return super.onOptionsItemSelected(item)
+    }
 
     fun intentToAddTask() {
         var intent = Intent(this, AddTaskActivity::class.java)
@@ -81,36 +103,7 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
 
     }
 
-//    fun TimerFun(){
-//        object : CountDownTimer(100000, 1000) {
-//            override fun onTick(millisUntilFinished: Long) {
-//                var time=millisUntilFinished / 1000
-//                time = time * -1 + 100
-//                taskTimer = time
-//                binding.timer.text  = time.toString()
-//                binding.timer.timer
-//                //binding.counter.text = "Time: $time"
-//                Log.d("timer", "$time ")
-//                Log.d("timertask", "$taskTimer ")
-//            }
-//
-//            override fun onFinish() {
-//                //binding.counter.text = "Time: --"
-//
-//            }
-//        }.start()
-//    }
-
     //________________________________________________________/
-    fun splitTime(num: Long): String {
-        var hours: Int = (num / 60).toInt()
-        var minute = num / 60
-        var sec = num
-
-        if (sec.toInt() == 60) {
-        }
-        return " "
-    }
 
     override fun startTime(task: TaskTable, list: List<TaskTable>) {
         Log.d("ds", "sd")
@@ -199,7 +192,6 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
     }
 
     override fun popUpMenu(task: TaskTable) {
-
         var color = ""
         val inflter = LayoutInflater.from(this)
         val layout = inflter.inflate(R.layout.dialog_pop, null)
@@ -207,8 +199,6 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
         val editDesc = layout.findViewById<EditText>(R.id.descriptionET)
         editTitle.setText(task.taskName)
         editDesc.setText(task.taskDescription)
-
-
         val refPri = layout.findViewById<Button>(R.id.imgRed)
         val greenPri = layout.findViewById<Button>(R.id.imgGreen)
         val yellowPri = layout.findViewById<Button>(R.id.imgYellow)

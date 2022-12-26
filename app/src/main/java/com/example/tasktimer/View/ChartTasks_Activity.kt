@@ -26,6 +26,7 @@ class ChartTasks_Activity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        supportActionBar?.hide()
         super.onCreate(savedInstanceState)
         binding= ActivityChartTasksBinding.inflate(layoutInflater)
         setContentView(binding.root)

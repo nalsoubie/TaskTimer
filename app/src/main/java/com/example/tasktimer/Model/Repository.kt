@@ -24,6 +24,16 @@ class Repository(var taskDao:TaskDao) {
      fun getTasks():LiveData<List<TaskTable>>{
         return taskDao.getAllTasks()
     }// Done
+    fun getTasksByID():LiveData<List<TaskTable>>{
+        return taskDao.getAllTasksByID()
+    }// Done
+    fun getTasksByAlpha():LiveData<List<TaskTable>>{
+        return taskDao.getAllTasksbyAlpa()
+    }// Done
+
+
+
+
 
     fun getTasksBloean():List<TaskTable>{
         return taskDao.getAllTasksBoolean()
