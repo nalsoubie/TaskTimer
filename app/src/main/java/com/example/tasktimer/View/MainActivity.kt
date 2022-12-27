@@ -116,6 +116,7 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
             }.await()
             for (i in list) {
                 if (i.isRunning == true) {
+
                     lastTask = i
                     Log.d("TAG0100", "$lastTask,$i")
                     pauseTime(lastTask)
@@ -133,9 +134,11 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
                     timer.taskTime = task.taskTime
                     timer.startTimer()
                     task.isRunning = true
+
                     viewModel.updateTask(task)
                     Log.d("TAG2", "$task ")
                     if (task.isRunning == false) {
+
                         taskT.stop()
                     }
                 }

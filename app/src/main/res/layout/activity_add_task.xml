@@ -10,11 +10,15 @@
 
     <ImageButton
         android:id="@+id/button2"
-        android:layout_width="39dp"
-        android:layout_height="28dp"
-        android:background="@drawable/ic_baseline_keyboard_backspace_24"
+        android:layout_width="42dp"
+        android:layout_height="34dp"
+        android:background="@drawable/ic_baseline_arrow_circle_left_24"
+        android:backgroundTint="@color/primaryDarkColors"
         android:text="Cancel"
-        android:backgroundTint="@color/primaryDarkColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
     <LinearLayout

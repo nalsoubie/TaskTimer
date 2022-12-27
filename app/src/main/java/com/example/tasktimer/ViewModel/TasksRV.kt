@@ -29,7 +29,7 @@ class TasksRV(var clickListner: ClickListner ):RecyclerView.Adapter<TasksRV.View
         var task =taskList[position]
 
         holder.binding.apply {
-            tilteTxt.setText("${task.taskName}")
+            tilteTxt.text=("${task.taskName}")
             subjectTxt.setText("${task.taskDescription}")
             if (task.priority == "0red"){
                 perority.setImageResource(R.drawable.high_priority)
@@ -53,6 +53,8 @@ class TasksRV(var clickListner: ClickListner ):RecyclerView.Adapter<TasksRV.View
                 var time = StringBuilder()
                 time.append(hours).append(":").append(minutes).append(":").append(secunds)
                 timerTxt.text= convertSecondsToHMmSs(task.taskTime)
+
+              //  tilteTxt.setText("${task.taskName} is running")
 
             }
             pausebtn.setOnClickListener {

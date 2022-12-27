@@ -82,27 +82,31 @@
                 android:layout_height="42dp"
                 android:layout_gravity="left"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/total"
+                android:background="@drawable/shapee"
                 android:paddingLeft="10dp"
                 android:paddingTop="5dp"
                 android:paddingRight="10dp"
                 android:paddingBottom="5dp"
                 android:text="00:00:00"
-                android:textColor="@color/primaryColor"
+                android:textColor="#6DB1CD"
                 android:textSize="20sp" />
 
             <ImageButton
                 android:id="@+id/pausebtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_gravity="left"
-
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/shapee"
                 android:src="@drawable/icpause_24" />
 
             <ImageButton
                 android:id="@+id/restarbtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/shapee"
+
                 android:src="@drawable/ic_baseline_restart_alt_24" />
 
             <ImageView

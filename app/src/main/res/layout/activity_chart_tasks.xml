@@ -45,9 +45,9 @@
         android:id="@+id/cancelBtn"
         android:layout_width="39dp"
         android:layout_height="28dp"
-        android:background="@drawable/ic_baseline_keyboard_backspace_24"
+        android:background="@drawable/ic_baseline_arrow_circle_left_24"
         android:text="Cancel"
-        android:backgroundTint="@color/primaryDarkColor"
+        android:backgroundTint="@color/primaryDarkColors"
         tools:ignore="MissingConstraints"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
