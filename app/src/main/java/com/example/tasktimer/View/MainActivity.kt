@@ -124,9 +124,11 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
                     withContext(Dispatchers.Main) {
                         Toast.makeText(
                             this@MainActivity,
-                            "you ${lastTask.taskName}",
+                            " ${lastTask.taskName}",
                             Toast.LENGTH_LONG
                         ).show()
+                        binding.taskName.setText("${task.taskName} has started")
+                        binding.taskName.setTextColor(Color.parseColor("#c0b3c2"))
                     }
                 } else {
                     var timer = Timer(this@MainActivity, task)
@@ -179,6 +181,9 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
         }
         //binding.total.text = "Total Time\n${taskT.contentDescription}"
 
+        binding.taskName.setText("No task has started")
+        binding.taskName.setTextColor(Color.parseColor("#afc2cb"))
+
 
     }
 
@@ -192,6 +197,9 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
         viewModel.updateTask(task)
         Log.d("restart", "$task ")
 
+
+        binding.taskName.setText("No task has started")
+        binding.taskName.setTextColor(Color.parseColor("#afc2cb"))
 
     }
 
@@ -215,13 +223,13 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
         }
         greenPri.setOnClickListener {
             greenPri.setBackgroundColor(Color.parseColor("#b7ffc4"))
-            color = "1yellow"
+            color = "2green"
             refPri.setBackgroundColor(Color.GRAY)
             yellowPri.setBackgroundColor(Color.GRAY)
         }
         yellowPri.setOnClickListener {
             yellowPri.setBackgroundColor(Color.parseColor("#fff6c6"))
-            color = "2green"
+            color = "1yellow"
             refPri.setBackgroundColor(Color.GRAY)
             greenPri.setBackgroundColor(Color.GRAY)
         }

@@ -54,7 +54,6 @@ class TasksRV(var clickListner: ClickListner ):RecyclerView.Adapter<TasksRV.View
                 time.append(hours).append(":").append(minutes).append(":").append(secunds)
                 timerTxt.text= convertSecondsToHMmSs(task.taskTime)
 
-              //  tilteTxt.setText("${task.taskName} is running")
 
             }
             pausebtn.setOnClickListener {
