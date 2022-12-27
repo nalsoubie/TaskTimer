@@ -1,7 +1,7 @@
 package com.example.tasktimer.View
 
 
-import android.annotation.SuppressLint
+
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
@@ -28,7 +28,6 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
     private lateinit var binding: ActivityMainBinding
 
     private lateinit var rvAdapter: TasksRV
-    var totalTime = ""
     var lastTask = TaskTable(2, "2", "da", 5, "a", false)
 
 
@@ -38,7 +37,7 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
     val viewModel by lazy { ViewModelProvider(this).get(MainViewModel::class.java) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        //supportActionBar?.hide()
+
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -59,29 +58,24 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
 
         binding.apply {
             bAdd.setOnClickListener {
-                //timer.startTimer()
                 intentToAddTask()
             }// add btn
-            taskName.setOnClickListener {
-                //timer.restart()
-            }
 
             showAll.setOnClickListener {
-                totalTime = taskT.text.toString()
-                //timer.pauseTimer()
+
                 var intent = Intent(this@MainActivity, ChartTasks_Activity::class.java)
                 startActivity(intent)
-
-                Log.d("checkthis", "$totalTime")
             } //show all btn
         }// apply
 
 
     }//end create
+
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu1,menu)
         return super.onCreateOptionsMenu(menu)
-    }
+    }// inflater
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId){
@@ -96,7 +90,7 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
             })
         }
         return super.onOptionsItemSelected(item)
-    }
+    }// menu end
 
     fun intentToAddTask() {
         var intent = Intent(this, AddTaskActivity::class.java)
@@ -121,6 +115,7 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
                     Log.d("TAG0100", "$lastTask,$i")
                     pauseTime(lastTask)
                     // fun pause that object
+
                     withContext(Dispatchers.Main) {
                         Toast.makeText(
                             this@MainActivity,
@@ -129,7 +124,7 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
                         ).show()
                         binding.taskName.setText("${task.taskName} has started")
                         binding.taskName.setTextColor(Color.parseColor("#c0b3c2"))
-                    }
+                    }// context
                 } else {
                     var timer = Timer(this@MainActivity, task)
                     timer.running = task.isRunning
@@ -142,27 +137,12 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
                     if (task.isRunning == false) {
 
                         taskT.stop()
-                    }
-                }
-            }
+                    }// if
+                }// else
+            }//for
 
-        }
-
-        //binding.total.text = "Total Time\n${taskT.contentDescription}"
-
-/*
-1- check is running OB
-2- pasue (create the last task Var)
-3
- */
-//        var timer = Timer(this,task)
-//        timer.running=task.isRunning
-//        timer.taskTime=task.taskTime
-//        timer.startTimer()
-//        task.isRunning=timer.running
-//        viewModel.updateTask(task)
-//        Log.d("TAG2", "$task ")
-    }
+        }// launch
+    }// start fun
 
     override fun pauseTime(task: TaskTable) {
         lastTask = task
@@ -170,22 +150,21 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
         timer.running = task.isRunning
         timer.taskTime = task.taskTime
         timer.pauseTimer()
-        //taskT.stop() / EXtra
+
         task.isRunning = false
         task.taskTime = SystemClock.elapsedRealtime() - taskT.getBase() //
-        //task.isRunning=timer.running //Extra
+
         viewModel.updateTask(task)
         Log.d("TAG1", "$task ")
         if (task.isRunning == false) {
             taskT.stop()
-        }
-        //binding.total.text = "Total Time\n${taskT.contentDescription}"
+        } //if
 
         binding.taskName.setText("No task has started")
         binding.taskName.setTextColor(Color.parseColor("#afc2cb"))
 
 
-    }
+    }// pause fun
 
     override fun restartTime(task: TaskTable) {
 
@@ -201,7 +180,7 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
         binding.taskName.setText("No task has started")
         binding.taskName.setTextColor(Color.parseColor("#afc2cb"))
 
-    }
+    } //restart fun
 
 
     override fun popUpMenu(task: TaskTable) {
@@ -333,33 +312,23 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
             for (i in list) {
                 totalTime += i.taskTime
                 withContext(Dispatchers.Main) {
-//                    var hours = totalTime / 1000/60/60 %24
-//                    var minutes = totalTime/1000/60 %60
-//                    var secunds = totalTime/ 1000 %60
-                    //var z = totalTime / 1000
                     var x = convertSecondsToHMmSs(totalTime)
                     Log.d("ABCD123","$totalTime")
-//                    if (secunds<10){
-//                        secunds = 0 + secunds
-//                    }
-
 
                     binding.total.text = x
-                }
-                //hh:mm:ss
-                ;
-
-
-            }
+                }// context
+            }// for
 
 
         } //main
-    }
+    }// fun total
      fun convertSecondsToHMmSs(miliSec: Long): String {
         var seconds = miliSec / 1000
         val s = seconds % 60
         val m = seconds / 60 % 60
         val h = seconds / (60 * 60) % 24
         return String.format("%d:%02d:%02d", h, m, s)
-    }
-}
+    }// convert
+
+
+}//main

@@ -31,19 +31,8 @@ class Repository(var taskDao:TaskDao) {
         return taskDao.getAllTasksbyAlpa()
     }// Done
 
-
-
-
-
     fun getTasksBloean():List<TaskTable>{
         return taskDao.getAllTasksBoolean()
     }// Done
 
-//    fun updateTimer(time:Long, pk:Int){
-//        taskDao.updateTaskTime(time,pk)
-//    }
-//
-//    fun updateStatus(running:Boolean, pk:Int){
-//        taskDao.updateTaskStatus(running,pk)
-//    }
 }

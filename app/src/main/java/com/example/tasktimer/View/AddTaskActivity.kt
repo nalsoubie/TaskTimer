@@ -21,6 +21,7 @@ class AddTaskActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAddTaskBinding
     private val viewModel by lazy { ViewModelProvider(this).get(MainViewModel::class.java) }
     var color = " "
+
     lateinit var notificationManager: NotificationManager
     lateinit var notificationChannel: NotificationChannel
     lateinit var builder: Notification.Builder
@@ -30,7 +31,7 @@ class AddTaskActivity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        //supportActionBar?.hide()
+
         super.onCreate(savedInstanceState)
         binding = ActivityAddTaskBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -38,9 +39,6 @@ class AddTaskActivity : AppCompatActivity() {
             button2.setOnClickListener {
                 intentToMain()
             }
-//            imgRed.setBackgroundColor(Color.RED)
-//            imgGreen.setBackgroundColor(Color.GREEN)
-//            imgYellow.setBackgroundColor(Color.YELLOW)
 
             imgRed.setOnClickListener {
                 imgRed.setBackgroundColor(Color.parseColor("#ff5d73"))
@@ -53,7 +51,7 @@ class AddTaskActivity : AppCompatActivity() {
             imgGreen.setOnClickListener {
                 imgGreen.setBackgroundColor(Color.parseColor("#b7ffc4"))
                 color = "2green"
-                //"#b7ffc4"
+
 
                 imgYellow.setBackgroundColor(Color.GRAY)
                 imgRed.setBackgroundColor(Color.GRAY)
@@ -75,13 +73,12 @@ class AddTaskActivity : AppCompatActivity() {
                     createNotification(task)
                     intentToMain()
 
-                }
-//                var intentBack = Intent(this@AddTaskActivity,MainActivity::class.java)
-//                startActivity(intentBack)
-            }
+                }// if
+
+            }// save on click
 
 
-        }
+        }// apply
 
 
     }//end create
@@ -114,11 +111,9 @@ class AddTaskActivity : AppCompatActivity() {
 
             // building the notification
             builder = Notification.Builder(this)
-                //.setSmallIcon(R.drawable.ic_notification)
-                //.setLargeIcon(BitmapFactory.decodeResource(this.resources, R.drawable.ic_notification))
                 .setContentIntent(pendingIntent)
                 .setContentTitle("New Task have been Added")
-                .setContentText("${task.taskDescription}")
+                .setContentText("${task.taskName}")
         }
         //executing the notification
         notificationManager.notify(notificationId, builder.build())
