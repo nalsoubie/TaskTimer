@@ -122,8 +122,8 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
                             " ${lastTask.taskName}",
                             Toast.LENGTH_LONG
                         ).show()
-                        binding.taskName.setText("${task.taskName} has started")
-                        binding.taskName.setTextColor(Color.parseColor("#c0b3c2"))
+                      binding.taskName.setText("${task.taskName} has started")
+                     binding.taskName.setTextColor(Color.parseColor("#c0b3c2"))
                     }// context
                 } else {
                     var timer = Timer(this@MainActivity, task)
@@ -160,8 +160,8 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
             taskT.stop()
         } //if
 
-        binding.taskName.setText("No task has started")
-        binding.taskName.setTextColor(Color.parseColor("#afc2cb"))
+//        binding.taskName.setText("No task has started")
+//        binding.taskName.setTextColor(Color.parseColor("#afc2cb"))
 
 
     }// pause fun
@@ -194,6 +194,8 @@ class MainActivity : AppCompatActivity(), TasksRV.ClickListner {
         val refPri = layout.findViewById<Button>(R.id.imgRed)
         val greenPri = layout.findViewById<Button>(R.id.imgGreen)
         val yellowPri = layout.findViewById<Button>(R.id.imgYellow)
+
+
         refPri.setOnClickListener {
             refPri.setBackgroundColor(Color.parseColor("#ff5d73"))
             color = "0red"
